@@ -144,13 +144,13 @@ export class SeedConfig {
    * `index.html`.
    * @type {string}
    */
-  APP_TITLE = 'Welcome to angular-seed!';
+  APP_TITLE = 'La Prophétie du Sang';
 
   /**
    * Tracking ID.
    * @type {string}
    */
-  GOOGLE_ANALYTICS_ID = 'UA-XXXXXXXX-X';
+  GOOGLE_ANALYTICS_ID = 'UA-94110732-1';
 
   /**
    * The base folder of the applications source files.

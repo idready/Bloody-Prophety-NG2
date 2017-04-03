@@ -1,0 +1,17 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    idready -- Designer / Developper -- https://twitter.com/i_dready
+
+# THANKS
+
+    <name>
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5
+    AngularJs, Webpack, TypeScript
+    Foundation, Normalize.css
+    Apache Server Configs, Foundation, Modernizr
