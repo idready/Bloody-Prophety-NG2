@@ -1,0 +1,27 @@
+/* ===========================================
+ * Variables
+ * =========================================== */
+
+/* All components variables
+ * ==================================== */
+
+/* Animations
+* ==================================== */
+
+$modal-animation-duration: 0.6s !default;
+$animation-duration: 0.3s !default;
+$animation-delay: 0s !default;
+$animation-function: ease !default;
+$animation-fill: both !default;
+$animation-visibility: hidden !default;
+$default-transition: all $animation-duration $animation-function;
+
+/* Font-face names
+ * ==================================== */
+
+$abraham-lincoln-regular-path: '/assets/fonts/Abraham-Lincoln/Regular';
+$abraham-lincoln-regular: 'Abraham-Lincoln-Regular';
+$abraham-lincoln-bold-path: '/assets/fonts/Abraham-Lincoln/Bold';
+$abraham-lincoln-bold: 'Abraham-Lincoln-Bold';
+$abraham-lincoln-italic-path: '/assets/fonts/Abraham-Lincoln/Italic';
+$abraham-lincoln-italic: 'Abraham-Lincoln-Italic';

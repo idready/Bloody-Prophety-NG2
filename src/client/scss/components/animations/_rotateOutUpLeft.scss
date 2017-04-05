@@ -1,0 +1,14 @@
+
+@keyframes rotateOutUpLeft {
+	0% {transform-origin: left bottom; transform: rotate(0); opacity: 1;}
+ 100% {transform-origin: left bottom; transform: rotate(-90deg); opacity: 0;}
+}
+
+@mixin rotateOutUpLeft($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility) {
+	@include animation-name(rotateOutUpLeft);
+  @include duration($animation-duration);
+  @include delay($animation-delay);
+  @include function($animation-function);
+  @include fill-mode($animation-fill);
+  @include visibility($animation-visibility);
+}

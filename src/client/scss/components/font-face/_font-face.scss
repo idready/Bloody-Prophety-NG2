@@ -1,0 +1,35 @@
+/* ===========================================
+ * @Mixin font-face
+ * =========================================== */
+
+/* Change this and add your own
+ * ==================================== */
+
+// Example:
+// @include font-face('fonts/Open-Sans/Regular/', 'OpenSans-Regular-webfont', $open-sans-regular, $open-sans-regular);
+
+@mixin font-face($path, $style-name, $file, $family, $category: 'serif') {
+
+    $filepath: $path + "/" + $file;
+
+    @font-face {
+        font-family: "#{$style-name}";
+        src: url($filepath + ".eot");
+        src: url($filepath + ".eot?#iefix") format('embedded-opentype'),
+        	 url($filepath + ".woff") format('woff'),
+        	 url($filepath + ".ttf")  format('truetype'),
+        	 url($filepath + ".svg#" + $style-name + "") format('svg');
+    }
+    %#{$style-name} {
+        font: {
+            @if $category != "" {
+                family: quote(#{$style-name}), #{$category};
+            }
+            @else {
+                family: quote(#{$style-name});
+                weight: normal;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,15 @@
+
+@keyframes bounceOutRight {
+  0% {transform: translateX(0);}
+  20% {opacity: 1; transform: translateX(-20px);}
+  100% {opacity: 0; transform: translateX(2000px);}
+}
+
+@mixin bounceOutRight($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility) {
+  @include animation-name(bounceOutRight);
+  @include duration($animation-duration);
+  @include delay($animation-delay);
+  @include function($animation-function);
+  @include fill-mode($animation-fill);
+  @include visibility($animation-visibility);
+}

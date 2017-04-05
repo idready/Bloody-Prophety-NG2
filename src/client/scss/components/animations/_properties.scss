@@ -1,0 +1,86 @@
+// duration     Specifies how many seconds or milliseconds an animation takes
+//                to complete one cycle. Default 0
+//
+// delay        Specifies when the animation will start. Default 0
+//
+// function     Describes how the animation will progress over one cycle of its
+//                duration. Default "ease"
+//
+// count        Specifies the number of times an animation is played. Default 1
+//
+// fill-mode    Specifies whether the effects of an animation are apparent
+//                before the animation starts and after it ends.
+//
+// visibility   Determines whether or not a transformed element is visible when
+//                it is not facing the screen.
+
+@mixin duration($animation-duration: 1s) {
+
+  -webkit-animation-duration: $animation-duration;
+     -moz-animation-duration: $animation-duration;
+       -ms-animation-duration: $animation-duration;
+        -o-animation-duration: $animation-duration;
+           animation-duration: $animation-duration;
+}
+
+@mixin delay($animation-delay: .2s) {
+
+    -webkit-animation-delay: $animation-delay;
+       -moz-animation-delay: $animation-delay;
+        -ms-animation-delay: $animation-delay;
+         -o-animation-delay: $animation-delay;
+          animation-delay: $animation-delay;
+}
+
+@mixin function($animation-function: ease) {
+
+    -webkit-animation-timing-function: $animation-function;
+       -moz-animation-timing-function: $animation-function;
+        -ms-animation-timing-function: $animation-function;
+         -o-animation-timing-function: $animation-function;
+          animation-timing-function: $animation-function;
+}
+
+@mixin fill-mode($animation-fill: both) {
+
+    -webkit-animation-fill-mode: $animation-fill;
+       -moz-animation-fill-mode: $animation-fill;
+        -ms-animation-fill-mode: $animation-fill;
+         -o-animation-fill-mode: $animation-fill;
+          animation-fill-mode: $animation-fill;
+}
+
+@mixin visibility($animation-visibility: hidden) {
+
+    -webkit-backface-visibility: $animation-visibility;
+       -moz-backface-visibility: $animation-visibility;
+        -ms-backface-visibility: $animation-visibility;
+         -o-backface-visibility: $animation-visibility;
+          backface-visibility: $animation-visibility;
+}
+
+@mixin transform-origin($transform-origin: center center) {
+
+    -webkit-transform-origin: $transform-origin;
+       -moz-transform-origin: $transform-origin;
+        -ms-transform-origin: $transform-origin;
+         -o-transform-origin: $transform-origin;
+          transform-origin: $transform-origin;
+}
+
+@mixin transform-style($transform-style: flat) {
+
+    -webkit-transform-style: $transform-style;
+       -moz-transform-style: $transform-style;
+         -o-transform-style: $transform-style;
+          transform-style: $transform-style;
+}
+
+@mixin animation-name($animation-name) {
+
+    -webkit-animation-name: $animation-name;
+       -moz-animation-name: $animation-name;
+        -ms-animation-name: $animation-name;
+         -o-animation-name: $animation-name;
+          animation-name: $animation-name;
+}

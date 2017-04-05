@@ -1,0 +1,111 @@
+
+/* ===========================================
+ * Pagination
+ * =========================================== */
+
+/* All styles related to the pagination number
+ * ==================================== */
+
+ // Mixin for number-color
+ @mixin number-color($text-bg: $black, $text-color: $white, $line-color: $black) {
+
+    &::before,
+    &::after,
+    .pagination-number__shape {
+
+        background: $text-bg;
+    }
+
+    .pagination-number__shape {
+        color: $text-color;
+    }
+
+    &::before,
+    &::after {
+        background: $line-color;
+    }
+ }
+
+.pagination {
+
+    margin-bottom: 15px;
+    text-align: center;
+
+    .pagination-number,
+    .pagination-number__shape,
+    .pagination-number__text {
+        transition: $default-transition;
+    }
+
+    .pagination-number {
+
+        @include number-color();
+        padding: 30px 0;
+        position: relative;
+
+        .pagination-number__shape {
+
+            border-radius: 50%;
+            display: inline-block;
+            height: 40px;
+            position: relative;
+            line-height: 40px; //Temporary solution
+            width: 40px;
+            z-index: 2;
+        }
+
+        .pagination-number__text {
+            font-size: 30px;
+        }
+
+        &::before,
+        &::after {
+
+            content: '';
+            left: 0;
+            margin: 0 auto;
+            position: absolute;
+            right: 0;
+            transition: $default-transition;
+        }
+
+        // Vertical line
+        &::before {
+
+            height: 100%;
+            top: 0;
+            width: 2px;
+        }
+
+        // Horizontal line
+        &::after {
+
+            bottom: 0;
+            height: 2px;
+            width: 50px;
+        }
+    }
+
+    // Feeds bigger devices
+    @include breakpoint('medium'){
+
+        .pagination-number {
+
+            font-size: 36px;
+            padding-top: 30px;
+
+            .pagination-number__shape {
+
+                height: 50px;
+                line-height: 50px; //Temporary solution
+                width: 50px;
+            }
+
+            .pagination-number__text {
+                font-size: 30px;
+            }
+
+        }
+
+    }
+}

@@ -1,0 +1,46 @@
+
+@import "core/core";
+@import "components/components";
+
+// Font face fonts
+// Regular
+@include font-face($abraham-lincoln-regular-path, $abraham-lincoln-regular, $abraham-lincoln-regular, $abraham-lincoln-regular);
+
+html,
+body {
+    min-height: 100vh;
+}
+// Rules used on all regions
+body {
+
+    background: $secondary-color;
+    font-family: "Abraham-Lincoln-Regular";
+    font-weight: normal;
+
+    // override "Normalize"
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Abraham-Lincoln-Regular";
+    }
+}
+
+.wrapper {
+
+    // display: flex;
+    // flex-flow: column nowrap;
+    min-height: 100vh;
+
+    header-cmp {
+        flex: 1 0 auto;
+    }
+
+    footer-cmp {
+        flex: 0; // Moved down
+    }
+}
+
+@import 'regions/regions';

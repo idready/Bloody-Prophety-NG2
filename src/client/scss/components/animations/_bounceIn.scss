@@ -1,0 +1,16 @@
+
+@keyframes bounceIn {
+  0% {opacity: 0; transform: scale(.3);}
+  50% {opacity: 1; transform: scale(1.05);}
+  70% {transform: scale(.9);}
+  100% {transform: scale(1);}
+}
+
+@mixin bounceIn($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility) {
+  @include animation-name(bounceIn);
+  @include duration($animation-duration);
+  @include delay($animation-delay);
+  @include function($animation-function);
+  @include fill-mode($animation-fill);
+  @include visibility($animation-visibility);
+}

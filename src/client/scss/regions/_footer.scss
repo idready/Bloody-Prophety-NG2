@@ -1,0 +1,32 @@
+
+/* ===========================================
+ * Footer
+ * =========================================== */
+
+/* All styles only related to footer
+ * ==================================== */
+
+.page-footer {
+
+    background: url('../images/footer/footer-bg.svg') $secondary-color no-repeat bottom;
+    background-size: contain;
+    min-height: 250px;
+    padding-top: 100px;
+    position: relative;
+
+    @include breakpoint('xlarge'){
+
+        background-size: cover;
+        min-height: 300px;
+        padding-top: 200px;
+    }
+    //Avoid background overlap with top of the footer
+    @include breakpoint('xlarge'){
+
+        background-position-y: 50%;
+    }
+}
+
+.page-footer__content {
+    background: $white;
+}

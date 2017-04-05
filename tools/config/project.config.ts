@@ -10,6 +10,13 @@ import { SeedConfig } from './seed.config';
 export class ProjectConfig extends SeedConfig {
 
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
+  
+  /**
+   * Enable SCSS stylesheet compilation.
+   * Set ENABLE_SCSS environment variable to 'true' or '1'
+   * @type {boolean}
+   */
+  ENABLE_SCSS = true;
 
   constructor() {
     super();

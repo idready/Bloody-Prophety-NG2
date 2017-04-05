@@ -1,0 +1,21 @@
+/* ===========================================
+ * SVG
+ * =========================================== */
+
+/* Svg icons basic behavior
+ * ==================================== */
+
+.icon-elt {
+
+    display: inline-block;
+    margin: 0;
+}
+
+.icon {
+
+    fill: currentColor;
+    height: 64px;
+    max-width: 100%;
+    transition: $default-transition;
+    width: 64px;
+}

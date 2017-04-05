@@ -1,0 +1,18 @@
+
+@keyframes swing {
+	20% { transform: rotate(15deg); }
+	40% { transform: rotate(-10deg); }
+	60% { transform: rotate(5deg); }
+	80% { transform: rotate(-5deg); }
+	100% { transform: rotate(0deg); }
+}
+
+@mixin swing($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility) {
+	@include transform-origin(top center);
+	@include animation-name(swing);
+  @include duration($animation-duration);
+  @include delay($animation-delay);
+  @include function($animation-function);
+  @include fill-mode($animation-fill);
+  @include visibility($animation-visibility);
+}

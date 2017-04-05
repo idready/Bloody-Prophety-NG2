@@ -1,0 +1,14 @@
+
+@keyframes fadeInUpBig {
+  0% {opacity: 0; transform: translateY(2000px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+
+@mixin fadeInUpBig($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility) {
+  @include animation-name(fadeInUpBig);
+  @include duration($animation-duration);
+  @include delay($animation-delay);
+  @include function($animation-function);
+  @include fill-mode($animation-fill);
+  @include visibility($animation-visibility);
+}
