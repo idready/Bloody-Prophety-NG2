@@ -1,3 +1,24 @@
-<p>
-  header works!
-</p>
+<header class="header">
+    <nav>
+        <ul class="header-nav row">
+            <li class="small-6 medium-4 large-2 ng-scope" ng-repeat="link in linksDatas track by $index">
+                <a class="header-nav__link ng-binding ng-scope current" href="/#livre">Le livre</a>
+            </li>
+            <li class="small-6 medium-4 large-2 ng-scope" ng-repeat="link in linksDatas track by $index">
+                <a class="header-nav__link ng-binding ng-scope" href="/#auteur">L’auteur</a>
+            </li>
+            <li class="small-6 medium-4 large-2 ng-scope" ng-repeat="link in linksDatas track by $index">
+                <a class="header-nav__link ng-binding ng-scope" href="/#extraits-livre">Extraits du livre</a>
+            </li>
+            <li class="small-6 medium-4 large-2 ng-scope" ng-repeat="link in linksDatas track by $index">
+                <a class="header-nav__link ng-binding ng-scope" href="/#evenements">Évènements</a>
+            </li>
+            <li class="small-6 medium-4 large-2 ng-scope" ng-repeat="link in linksDatas track by $index">
+                <a class="header-nav__link ng-binding ng-scope" href="/#contact">Contact</a>
+            </li>
+            <li class="small-6 medium-4 large-2 ng-scope" ng-repeat="link in linksDatas track by $index">
+                <a class="header-nav__link ng-binding ng-scope" ng-if="!link.page_id_anchor" ng-click="setSelectedLink($index, $event)" ui-sref="blog" ng-class="{current: getState('article')}" ui-sref-active="current" ng-bind-html="safeHtml(link.title)" href="/blog">Blog</a>
+            </li>
+        </ul>
+    </nav>
+</header>

@@ -64,7 +64,7 @@ $dropTrailWidth: ($dropsCount * 2) * $dropsSize + ($dropsSize/1);
     align-items: center;
     // border: 1px solid tomato;
     display: flex;
-    filter: url('../images/loader/gooey.svg#goo');
+    filter: url('../assets/loader/gooey.svg#goo');
     flex: 0 0 ($dropsCount * $dropsSize);
     flex-flow: column nowrap;
     justify-content: center;
