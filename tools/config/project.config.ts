@@ -17,6 +17,20 @@ export class ProjectConfig extends SeedConfig {
    * @type {boolean}
    */
   ENABLE_SCSS = true;
+  
+  /**
+   * The default title of the application as used in the `<title>` tag of the
+   * `index.html`.
+   * @type {string}
+   */
+  APP_TITLE = 'La Prophétie du Sang';
+  
+  /**
+   * Tracking ID.
+   * @type {string}
+   */
+  GOOGLE_ANALYTICS_ID = 'UA-94110732-1';
+
 
   constructor() {
     super();

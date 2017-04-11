@@ -16,7 +16,7 @@
     background: $secondary-color;
     padding-top: 25px;
 
-    .header-nav {
+    .header__nav {
 
         margin-bottom: 0; // Cancel default ul margins
 
@@ -27,7 +27,7 @@
         }
     }
 
-    .header-nav__link {
+    .nav__link {
 
         color: $primary-color;
         display: inline-block;
@@ -49,7 +49,7 @@
     @include breakpoint('medium'){
 
         // Ornament for menu links items
-        .header-nav__link {
+        .nav__link {
 
             font-size: 25px;
 
@@ -119,7 +119,7 @@
     @include breakpoint('xxlarge'){
 
         // Ornament for menu links items
-        .header-nav__link {
+        .nav__link {
 
             font-size: 30px;
         }
