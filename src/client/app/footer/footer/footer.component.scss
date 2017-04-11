@@ -8,7 +8,14 @@
 
  @import '../../../scss/core/core';
  @import '../../../scss/components/variables';
- 
+
+ //Positioning only
+ :host {
+
+   align-self: flex-end;
+   flex: 1 0 100%;
+ }
+
  .contact {
 
      padding-bottom: 50px;
@@ -80,8 +87,8 @@
      }
  }
 
- 
- 
+
+
 .page-footer {
 
     background: url('../assets/footer/footer-bg.svg') $secondary-color no-repeat bottom;

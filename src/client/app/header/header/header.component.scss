@@ -11,6 +11,11 @@
 @import '../../../scss/components/animations';
 @import '../../../scss/components/components';
 
+//Positioning only
+:host {
+  flex: 1 0 100%;
+}
+
 .header {
 
     background: $secondary-color;
@@ -115,7 +120,7 @@
         }
 
     }
-    
+
     @include breakpoint('xxlarge'){
 
         // Ornament for menu links items
