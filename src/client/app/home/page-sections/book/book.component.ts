@@ -13,9 +13,7 @@ export class BookComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    
     console.info('Init book ', this.datas);
-    
   }
 
 }

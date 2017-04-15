@@ -3,27 +3,27 @@ import { BrowserModule } from '@angular/platform-browser';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HeaderComponent } from './header/header/header.component';
-import { FooterComponent } from './footer/footer/footer.component';
+import { AppComponent } from './app.component';
 
-import { HomeComponent } from './home/home.component';
-import { BlogComponent } from './blog/blog.component';
+import { HeaderModule } from './header/header.module';
+import { FooterModule } from './footer/footer.module';
+
 import { HomeModule } from './home/home.module';
+import { BlogModule } from './blog/blog.module';
 
 @NgModule({
   imports: [
+    AppRoutingModule,
     BrowserModule, 
     HttpModule, 
-    AppRoutingModule,
+    HeaderModule,
+    FooterModule,
+    HomeModule,
+    BlogModule
   ],
   declarations: [
-    AppComponent,
-    HomeComponent,
-    BlogComponent,
-    HeaderComponent,
-    FooterComponent
+    AppComponent
   ],
   providers: [{
     provide: APP_BASE_HREF,

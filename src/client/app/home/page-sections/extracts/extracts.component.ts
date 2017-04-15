@@ -13,6 +13,7 @@ export class ExtractsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+      console.info('Init extracts ', this.datas);
   }
 
 }
