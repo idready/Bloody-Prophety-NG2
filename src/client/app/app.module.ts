@@ -12,6 +12,7 @@ import { FooterModule } from './footer/footer.module';
 import { HomeModule } from './home/home.module';
 import { BlogModule } from './blog/blog.module';
 
+// @TODO: Add a pageNotFound component
 @NgModule({
   imports: [
     AppRoutingModule,
