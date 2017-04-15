@@ -11,19 +11,3 @@
 //   list-style-type: none;
 //   padding: 0 0 0 8px;
 // }
-
-
-.wrapper {
-
-    display: flex;
-    flex-flow: row wrap;
-    min-height: 100vh;
-
-    header-cmp {
-        flex: 1 0 auto;
-    }
-
-    footer-cmp {
-        flex: 0; // Moved down
-    }
-}

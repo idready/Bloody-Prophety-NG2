@@ -1,5 +1,12 @@
-:host {
-  flex: 1 1 100%;
-  display: flex;
-  flex-flow: column;
+    // :host {
+    //   flex: 1 1 100%;
+    //   display: flex;
+    //   flex-flow: column;
+    // }
+
+.wrapper {
+
+    display: flex;
+    flex-flow: row wrap;
+    min-height: 100vh;
 }

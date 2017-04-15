@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NameListService } from '../shared/name-list/name-list.service';
 
 /**
@@ -51,6 +51,10 @@ export class HomeComponent implements OnInit {
     this.names.push(this.newName);
     this.newName = '';
     return false;
+  }
+  
+  OnDestroy() {
+     console.info('destroy');
   }
 
 }

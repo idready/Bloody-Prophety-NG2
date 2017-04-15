@@ -2,7 +2,7 @@
     <nav>
         <ul class="header__nav row">
             <li class="small-6 medium-4 large-2 ng-scope" ng-repeat="link in linksDatas track by $index">
-                <a class="nav__link ng-binding ng-scope current" href="/#livre">Le livre</a>
+                <a class="nav__link ng-binding ng-scope current" [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" href="/#livre">Le livre</a>
             </li>
             <li class="small-6 medium-4 large-2 ng-scope" ng-repeat="link in linksDatas track by $index">
                 <a class="nav__link ng-binding ng-scope" href="/#auteur">L’auteur</a>
@@ -17,7 +17,7 @@
                 <a class="nav__link ng-binding ng-scope" href="/#contact">Contact</a>
             </li>
             <li class="small-6 medium-4 large-2 ng-scope" ng-repeat="link in linksDatas track by $index">
-                <a class="nav__link ng-binding ng-scope" ng-if="!link.page_id_anchor" ng-click="setSelectedLink($index, $event)" ui-sref="blog" ng-class="{current: getState('article')}" ui-sref-active="current" ng-bind-html="safeHtml(link.title)" href="/blog">Blog</a>
+                <a class="nav__link ng-binding ng-scope" ng-if="!link.page_id_anchor" ng-click="setSelectedLink($index, $event)" ng-class="{current: getState('article')}" [routerLink]="['/blog']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Blog</a>
             </li>
         </ul>
     </nav>
