@@ -15,8 +15,8 @@ import { BlogModule } from './blog/blog.module';
 @NgModule({
   imports: [
     AppRoutingModule,
-    BrowserModule, 
-    HttpModule, 
+    BrowserModule,
+    HttpModule,
     HeaderModule,
     FooterModule,
     HomeModule,

@@ -9,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  linkIndex: number;
 
-  ngOnInit() {
+  constructor() {
+    console.info('initialized header component');
   }
 
+  ngOnInit() {
+
+    this.linkIndex = 0;
+  }
+
+  /**
+   * [updateLinkIndex set current link]
+   * @param  {number = 0}           index [description]
+   * @return {[type]}      [description]
+   */
+  updateLinkIndex(index: number = 0) {
+
+    this.linkIndex = index;
+  }
 }

@@ -51,9 +51,9 @@ export class HomeComponent implements OnInit {
     // TODO: implement nameListService.post
     // this.names.push(this.newName);
     // this.newName = '';
-    // return false;
+    return false;
   }
-  
+
   OnDestroy() {
      console.info('destroy');
   }
