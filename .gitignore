@@ -56,4 +56,4 @@ src/client/app/shared/config/env.config.js
 src/client/app/shared/config/env.config.js.map
 
 # Docker
-src/server
+src/server/docker-compose.yml
