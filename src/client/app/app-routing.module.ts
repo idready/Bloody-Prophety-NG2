@@ -9,7 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
         */
         [{ path: '**', redirectTo: '' }],
         {
-        //   enableTracing: true
+          enableTracing: true
         }
       )
   ],
