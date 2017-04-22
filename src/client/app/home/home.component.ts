@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NameListService } from '../shared/name-list/name-list.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+// import { NameListService } from '../shared/name-list/name-list.service';
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -22,7 +22,8 @@ export class HomeComponent implements OnInit {
    *
    * @param {NameListService} nameListService - The injected NameListService.
    */
-  constructor(public nameListService: NameListService) {}
+  constructor() {}
+  // constructor(public nameListService: NameListService) {}
 
   /**
    * Get the names OnInit
@@ -35,11 +36,11 @@ export class HomeComponent implements OnInit {
    * Handle the nameListService observable
    */
   getNames() {
-    this.nameListService.get()
-      .subscribe(
-        names => this.names = names,
-        error => this.errorMessage = <any>error
-      );
+    // this.nameListService.get()
+    //   .subscribe(
+    //     names => this.names = names,
+    //     error => this.errorMessage = <any>error
+    //   );
   }
 
   /**
@@ -48,9 +49,13 @@ export class HomeComponent implements OnInit {
    */
   addName(): boolean {
     // TODO: implement nameListService.post
-    this.names.push(this.newName);
-    this.newName = '';
+    // this.names.push(this.newName);
+    // this.newName = '';
     return false;
+  }
+
+  OnDestroy() {
+     console.info('destroy');
   }
 
 }

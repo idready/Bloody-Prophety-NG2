@@ -1,0 +1,23 @@
+@keyframes slideInUp {
+	0% {
+		transform: translate3d(0, 100%, 0);
+		visibility: visible;
+	}
+
+	100% {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@mixin slideInUp($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility) {
+    @include animation-name(slideInUp);
+    @include duration($animation-duration);
+    @include delay($animation-delay);
+    @include function($animation-function);
+    @include fill-mode($animation-fill);
+    @include visibility($animation-visibility);
+}
+
+// .slideInUp {
+// 	@include animate-prefixer(animation-name, slideInUp);
+// }

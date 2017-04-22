@@ -1,9 +1,9 @@
 {
-  "name": "angular-seed",
+  "name": "bloody-prophety",
   "version": "0.0.0",
-  "description": "Modular starter project for Angular 2 (and beyond) with statically typed build and AoT compilation",
+  "description": "Modular project with Angular 2 Seed (and beyond) with statically typed build and AoT compilation",
   "repository": {
-    "url": "https://github.com/mgechev/angular-seed"
+    "url": "https://github.com/idready/Bloody-Prophety-NG2"
   },
   "scripts": {
     "build.dev": "gulp build.dev --color --env-config dev",
@@ -46,6 +46,7 @@
   "author": "Minko Gechev <mgechev>",
   "license": "MIT",
   "devDependencies": {
+    "@angular/cli": "^1.0.0",
     "@angular/compiler-cli": "^4.0.0-rc.2",
     "@angular/platform-server": "^4.0.0-rc.2",
     "@types/async": "^2.0.32",
@@ -98,6 +99,7 @@
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.10",
+    "http-proxy-middleware": "^0.17.4",
     "is-ci": "^1.0.9",
     "isstream": "^0.1.2",
     "jasmine-core": "~2.5.2",

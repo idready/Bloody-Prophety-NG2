@@ -1,0 +1,115 @@
+
+/* ===========================================
+ * Footer
+ * =========================================== */
+
+/* All styles only related to footer
+ * ==================================== */
+
+ @import '../../../scss/core/core';
+ @import '../../../scss/components/variables';
+
+ //Positioning only
+ :host {
+
+   align-self: flex-end;
+   flex: 1 0 100%;
+ }
+
+ .contact {
+
+     padding-bottom: 50px;
+     padding-top: 50px;
+
+     .links,
+     .cp-rights {
+
+        font-size: 22px;
+        text-align: center;
+        text-transform: uppercase;
+        transition: $default-transition;
+     }
+
+     .links {
+
+         color: $primary-color;
+         list-style-type: none;
+         margin-bottom: 30px;
+         margin-left: 0; // Cancel default margin
+
+         .links__item {
+
+             border-right: 1px solid $primary-color;
+             display: inline-flex;
+             padding: 0 20px;
+             text-transform: uppercase;
+
+             &:last-child {
+
+                 border-right-color: transparent;
+             }
+
+             > a,
+             > span {
+
+                 line-height: 1;
+                 transition: $default-transition;
+             }
+
+             > a {
+
+                 &:hover {
+
+                     color: $secondary-color;
+                 }
+             }
+         }
+     }
+
+     .cp-rights {
+
+         color: $black;
+     }
+
+     @include breakpoint('medium'){
+
+         .links,
+         .cp-rights {
+
+             font-size: 22px;
+         }
+
+         .links {
+
+             // font-size: 18px;
+             margin-bottom: 40px;
+         }
+     }
+ }
+
+
+
+.page-footer {
+
+    background: url('../assets/footer/footer-bg.svg') $secondary-color no-repeat bottom;
+    background-size: contain;
+    min-height: 250px;
+    padding-top: 100px;
+    position: relative;
+
+    @include breakpoint('xlarge'){
+
+        background-size: cover;
+        min-height: 300px;
+        padding-top: 200px;
+    }
+    //Avoid background overlap with top of the footer
+    @include breakpoint('xlarge'){
+
+        background-position-y: 50%;
+    }
+}
+
+.page-footer__content {
+    background: $white;
+}

@@ -1,0 +1,15 @@
+
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+	40% {transform: translateY(-30px);}
+	60% {transform: translateY(-15px);}
+}
+
+@mixin bounce($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility) {
+	@include animation-name(bounce);
+  	@include duration($animation-duration);
+	@include delay($animation-delay);
+	@include function($animation-function);
+	@include fill-mode($animation-fill);
+	@include visibility($animation-visibility);
+}

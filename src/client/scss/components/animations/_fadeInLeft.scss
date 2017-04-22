@@ -1,0 +1,14 @@
+
+@keyframes fadeInLeft {
+    0% {opacity: 0; transform: translateX(-20px);}
+  100% {opacity: 1; transform: translateX(0);}
+}
+
+@mixin fadeInLeft($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility) {
+  @include animation-name(fadeInLeft);
+  @include duration($animation-duration);
+  @include delay($animation-delay);
+  @include function($animation-function);
+  @include fill-mode($animation-fill);
+  @include visibility($animation-visibility);
+}

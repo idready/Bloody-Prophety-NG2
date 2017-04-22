@@ -1,0 +1,82 @@
+
+
+/* ===========================================
+ * Author
+ * =========================================== */
+
+/* All styles related to the author part
+ * ==================================== */
+
+@import 'components/pagination';
+
+.author {
+
+    background: $primary-color;
+    padding-bottom: 30px;
+
+    //Common
+    .author-bio,
+    .author-photo {
+        padding: 0 5%;
+    }
+
+
+    .author-bio {
+
+        text-align: left;
+
+        .author-bio__title,
+        .author-bio__text {
+
+            color: $white;
+            transition: $default-transition;
+        }
+
+        .author-bio__title {
+
+            font-size: 30px;
+        }
+
+        .author-bio__text {
+            font-size: 28px;
+        }
+
+        @include breakpoint('medium'){
+
+            .author-bio__title {
+
+                font-size: 36px;
+                margin-bottom: 35px;
+            }
+
+            .author-bio__text {
+
+                font-size: 24px;
+                text-align: justify;
+            }
+        }
+
+    }
+
+    .author-photo {
+
+        margin-top: 30px;
+        text-align: center;
+
+        img {
+
+            border: 1px solid whitesmoke;
+            max-width: 80%;
+        }
+
+        @include breakpoint('large'){
+
+            margin-top: 0;
+        }
+    }
+
+    @include breakpoint('medium'){
+
+        padding-bottom: 45px;
+    }
+}

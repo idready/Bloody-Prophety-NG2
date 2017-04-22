@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
   imports: [
-    RouterModule.forRoot([
-      /* define app module routes here, e.g., to lazily load a module
+    RouterModule.forRoot(
+        /* define app module routes here, e.g., to lazily load a module
          (do not place feature module routes here, use an own -routing.module.ts in the feature instead)
-       */
-    ])
+        */
+        [{ path: '**', redirectTo: '' }],
+        {
+          enableTracing: true
+        }
+      )
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: []
 })
 export class AppRoutingModule { }
-

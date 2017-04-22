@@ -1,0 +1,21 @@
+{
+    "extends": "airbnb-base",
+    # 'airbnb-base' because 'airbnb' assumes usage of react
+    "parser": "babel-eslint",
+    "rules": {
+        "comma-dangle": 0,
+        "no-console": 0,
+        "semi": [2, "always"],
+        "func-names": 0,
+        "space-before-function-paren": 0,
+        "no-multi-spaces": 0,
+        "generator-star-spacing": 1,
+        "babel/new-cap": 1,
+        "object-shorthand": 1,
+        "arrow-parens": 1,
+        "babel/no-await-in-loop": 1
+    },
+    "plugins": [
+        "babel"
+    ]
+}

@@ -1,0 +1,16 @@
+// originally authored by Nick Pettit - https://github.com/nickpettit/glide
+
+@keyframes pulse {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.1);}
+  100% {transform: scale(1);}
+}
+
+@mixin pulse($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility) {
+  @include animation-name(pulse);
+  @include duration($animation-duration);
+  @include delay($animation-delay);
+  @include function($animation-function);
+  @include fill-mode($animation-fill);
+  @include visibility($animation-visibility);
+}

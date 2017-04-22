@@ -10,6 +10,27 @@ import { SeedConfig } from './seed.config';
 export class ProjectConfig extends SeedConfig {
 
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
+  
+  /**
+   * Enable SCSS stylesheet compilation.
+   * Set ENABLE_SCSS environment variable to 'true' or '1'
+   * @type {boolean}
+   */
+  ENABLE_SCSS = true;
+  
+  /**
+   * The default title of the application as used in the `<title>` tag of the
+   * `index.html`.
+   * @type {string}
+   */
+  APP_TITLE = 'La Prophétie du Sang';
+  
+  /**
+   * Tracking ID.
+   * @type {string}
+   */
+  GOOGLE_ANALYTICS_ID = 'UA-94110732-1';
+
 
   constructor() {
     super();
@@ -42,9 +63,9 @@ export class ProjectConfig extends SeedConfig {
     // this.addPackagesBundles(additionalPackages);
 
     /* Add proxy middleware */
-    // this.PROXY_MIDDLEWARE = [
-    //   require('http-proxy-middleware')({ ws: false, target: 'http://localhost:3003' })
-    // ];
+    this.PROXY_MIDDLEWARE = [
+      require('http-proxy-middleware')('/wp-json', { ws: false, target: 'http://localhost:9000/' })
+    ];
 
     /* Add to or override NPM module configurations: */
     // this.PLUGIN_CONFIGS['browser-sync'] = { ghostMode: false };

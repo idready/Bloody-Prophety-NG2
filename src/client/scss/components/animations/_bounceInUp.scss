@@ -1,0 +1,16 @@
+
+@keyframes bounceInUp {
+  0% {opacity: 0; transform: translateY(2000px);}
+  60% {opacity: 1; transform: translateY(-30px);}
+  80% {transform: translateY(10px);}
+  100% {transform: translateY(0);}
+}
+
+@mixin bounceInUp($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility) {
+  @include animation-name(bounceInUp);
+  @include duration($animation-duration);
+  @include delay($animation-delay);
+  @include function($animation-function);
+  @include fill-mode($animation-fill);
+  @include visibility($animation-visibility);
+}

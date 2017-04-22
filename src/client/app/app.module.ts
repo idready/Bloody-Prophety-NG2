@@ -2,16 +2,30 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpModule } from '@angular/http';
-import { AppComponent } from './app.component';
+
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
-import { AboutModule } from './about/about.module';
+import { HeaderModule } from './header/header.module';
+import { FooterModule } from './footer/footer.module';
+
 import { HomeModule } from './home/home.module';
-import { SharedModule } from './shared/shared.module';
+import { BlogModule } from './blog/blog.module';
 
+// @TODO: Add a pageNotFound component
 @NgModule({
-  imports: [BrowserModule, HttpModule, AppRoutingModule, AboutModule, HomeModule, SharedModule.forRoot()],
-  declarations: [AppComponent],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    HttpModule,
+    HeaderModule,
+    FooterModule,
+    HomeModule,
+    BlogModule
+  ],
+  declarations: [
+    AppComponent
+  ],
   providers: [{
     provide: APP_BASE_HREF,
     useValue: '<%= APP_BASE %>'
@@ -19,4 +33,5 @@ import { SharedModule } from './shared/shared.module';
   bootstrap: [AppComponent]
 
 })
+
 export class AppModule { }

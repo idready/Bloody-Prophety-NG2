@@ -1,0 +1,133 @@
+
+/* ===========================================
+ * Menu
+ * =========================================== */
+
+/* All styles related to top menu
+ * ==================================== */
+
+@import '../../../scss/core/core';
+@import '../../../scss/components/variables';
+@import '../../../scss/components/animations';
+@import '../../../scss/components/components';
+
+//Positioning only
+:host {
+  flex: 1 0 100%;
+}
+
+.header {
+
+    background: $secondary-color;
+    padding-top: 25px;
+
+    .header__nav {
+
+        margin-bottom: 0; // Cancel default ul margins
+
+        li {
+
+            list-style-type: none;
+            text-align: center;
+        }
+    }
+
+    .nav__link {
+
+        color: $primary-color;
+        display: inline-block;
+        font-size: 22px;
+        margin-bottom: 20px;
+        position: relative;
+        transition: $default-transition;
+        text-transform: uppercase;
+        z-index: 1;
+
+        &.current,
+        &:hover {
+            color: $white;
+        }
+
+    }
+
+    // Feeds bigger devices
+    @include breakpoint('medium'){
+
+        // Ornament for menu links items
+        .nav__link {
+
+            font-size: 25px;
+
+            // common
+            &::before,
+            &::after {
+                transition: $default-transition;
+            }
+
+            //Eyes for hover effect
+            &:hover {
+
+                &:not(.current) {
+                    &::before,
+                    &::after {
+
+                        animation: eyes-blink 2.5s $animation-function infinite reverse;
+                        background: $primary-color;
+
+                    }
+                }
+            }
+
+            //Ornament line
+            &::before,
+            &::after {
+
+                @include vertical-center;
+                background: currentColor;
+                content: '';
+                height: 1px;
+                width: 5px;
+                z-index: 0;
+            }
+
+            &::before {
+                left: -15px;
+            }
+            &::after {
+                right: -15px;
+            }
+
+            // Eyes blink animations
+            @keyframes eyes-blink {
+
+                0% {
+                    border-radius: 0%;
+                    height: 1px;
+                    width: 5px;
+                }
+                3%, 75% {
+                    border-radius: 50%;
+                    height: 5px;
+                    width: 5px;
+                }
+                50%, 100% {
+                    border-radius: 0%;
+                    height: 1px;
+                    width: 5px;
+                }
+            }
+
+        }
+
+    }
+
+    @include breakpoint('xxlarge'){
+
+        // Ornament for menu links items
+        .nav__link {
+
+            font-size: 30px;
+        }
+
+    }
+}

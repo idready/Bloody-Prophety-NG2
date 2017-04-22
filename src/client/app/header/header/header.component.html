@@ -1,0 +1,24 @@
+<header class="header">
+    <nav>
+        <ul class="header__nav row">
+            <li class="small-6 medium-4 large-2 ng-scope" ng-repeat="link in linksDatas track by $index">
+                <a class="nav__link ng-binding ng-scope" (click)="updateLinkIndex(0)" [ngClass]="{'current': linkIndex == 0}" [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" href="/#livre">Le livre</a>
+            </li>
+            <li class="small-6 medium-4 large-2 ng-scope" ng-repeat="link in linksDatas track by $index">
+                <a class="nav__link ng-binding ng-scope" (click)="updateLinkIndex(1)" [ngClass]="{'current': linkIndex == 1}" href="/#auteur">L’auteur</a>
+            </li>
+            <li class="small-6 medium-4 large-2 ng-scope" ng-repeat="link in linksDatas track by $index">
+                <a class="nav__link ng-binding ng-scope" (click)="updateLinkIndex(2)"[ngClass]="{'current': linkIndex == 2}"  href="/#extraits-livre">Extraits du livre</a>
+            </li>
+            <li class="small-6 medium-4 large-2 ng-scope" ng-repeat="link in linksDatas track by $index">
+                <a class="nav__link ng-binding ng-scope" (click)="updateLinkIndex(3)" [ngClass]="{'current': linkIndex == 3}" href="/#evenements">Évènements</a>
+            </li>
+            <li class="small-6 medium-4 large-2 ng-scope" ng-repeat="link in linksDatas track by $index">
+                <a class="nav__link ng-binding ng-scope" (click)="updateLinkIndex(4)" [ngClass]="{'current': linkIndex == 4}" href="/#contact">Contact</a>
+            </li>
+            <li class="small-6 medium-4 large-2 ng-scope" ng-repeat="link in linksDatas track by $index">
+                <a class="nav__link ng-binding ng-scope" (click)="updateLinkIndex(5)" [ngClass]="{'current': linkIndex == 5}" ng-if="!link.page_id_anchor" ng-click="setSelectedLink($index, $event)" [routerLink]="['/blog']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Blog</a>
+            </li>
+        </ul>
+    </nav>
+</header>

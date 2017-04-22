@@ -1,0 +1,271 @@
+
+
+/* ===========================================
+ * Blog
+ * =========================================== */
+
+/* All styles related to the blog articles and article parts
+ * ==================================== */
+
+.posts {
+
+    margin: 40px 0;
+}
+
+.post {
+
+    margin-bottom: 10px;
+    padding: 20px 40px;
+
+    .post__title {
+
+        margin: 0;
+
+        .post__title-text {
+
+            color: $primary-color;
+            font-size: $global-font-size * 2; // Using global value to bring harmony on spacing
+            // font-size: 32px;
+            transition: $default-transition;
+        }
+    }
+
+    &.list {
+
+        .post__title-text {
+
+            &:hover {
+                color: darken($primary-color, 10%);
+            }
+        }
+    }
+
+    &.single {
+
+        .post__title {
+
+            margin-top: 3rem;
+        }
+    }
+
+    .post__title,
+    .post__meta {
+        text-align: center;
+    }
+
+    // Common
+    .post__meta,
+    .post__content,
+    .post__extract {
+
+        color: $white;
+        font-family: Tahoma;
+    }
+
+    .post__content,
+    .post__extract {
+
+        margin-top: $global-margin * 4;
+        text-align: justify;
+    }
+
+    // META
+    .post__meta-date,
+    .post__meta-comment,
+    .post__meta-category {
+        font-size: 14px;
+    }
+
+    .post__meta-comment,
+    .post__meta-category {
+        margin-left: 10px;
+    }
+
+    // ICONS
+    .post__meta-icon {
+
+        color: $primary-color;
+        display: inline-block;
+        margin-right: $global-margin/2;
+
+        .icon {
+
+            height: 20px;
+            vertical-align: top;
+            width: 20px;
+        }
+    }
+
+    //  CONTENT
+    .post__content,
+    .post__extract {
+
+        font-size: 20px;
+
+        .more-link {
+            display: block;
+        }
+    }
+    // COMMENT FORM -common-
+    .post__comments-form-title,
+    .post__comments {
+
+        color: $white;
+        font-family: Tahoma;
+    }
+
+    // COMMENTS
+    .post__comments {
+
+        color: $white;
+        font-family: Tahoma;
+        padding-top: $global-padding * 2;
+    
+        label {
+            color: $white;    
+        }
+        
+        .post__comments-count {
+
+            font-size: $global-font-size * 1.1;
+            margin: $global-margin * 1.5 0;
+        }
+
+        .post__comments-post {
+
+            background: $white;
+            justify-content: flex-start; //Default but testing purpose
+            margin-bottom: $global-margin * 1.5;
+            padding: $global-padding;
+
+            .post__comments-post--meta,
+            .post__comments-post--content {}
+
+            .post__comments-post--meta {
+                text-align: center;
+            }
+
+            .post__comments-post--img,
+            .post__comments-post--date {
+                display: block;
+            }
+
+            .post__comments-post--name {
+                font-size: 18px;
+            }
+            .post__comments-post--date {
+
+                color: $secondary-color;
+                font-size: 14px;
+            }
+
+            .post__comments-post--img {
+                margin: $global-margin auto;
+            }
+
+            .post__comments-post--content {
+
+                color: $secondary-color;
+                line-height: 1;
+                padding: $global-padding;
+            }
+        }
+
+        .post__comment-feedback {
+
+            display: flex;
+
+            &.success {
+                color: $success-color;
+            }
+            &.error {
+                color: $alert-color;
+            }
+
+            .icon {
+
+                height: 15px;
+                width: 15px;
+            }
+
+            .post__comment-feedback-icon {
+
+                align-items: center;
+                display: flex;
+                flex: 0 auto;
+                margin-right: 15px;
+            }
+            .post__comment-feedback-message {
+
+                flex: 1 auto;
+                font-size: 16px;
+                margin-bottom: 0;
+            }
+
+            @include breakpoint('medium'){
+
+                .icon {
+
+                    height: 20px;
+                    width: 20px;
+                }
+
+                .post__comment-feedback-message {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        @include breakpoint('medium'){
+
+            .post__comments-count {
+                font-size: $global-font-size * 1.4;
+            }
+
+            .post__comments-post {
+
+                .post__comments-post--name {
+                    font-size: 16px;
+                }
+                .post__comments-post--date {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+
+    // Feeds bigger devices
+    @include breakpoint('medium'){
+
+        padding: 10px 20px;
+
+        .post__title {
+
+            .post__title-text {
+                font-size: 48px;
+            }
+        }
+
+        .post__content {
+
+            h1 {
+                font-size: $global-font-size * 2;
+            }
+
+            h2 {
+                font-size: $global-font-size * 1.25;
+            }
+        }
+    }
+
+    @include breakpoint('large'){
+
+        .post__title {
+
+            .post__title-text {
+                font-size: 56px;
+            }
+        }
+    }
+}

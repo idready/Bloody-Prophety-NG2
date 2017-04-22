@@ -1,0 +1,317 @@
+
+/* ===========================================
+ * Animations
+ * @TODO: add https://github.com/geoffgraham/animate.scss missing animations
+ * =========================================== */
+
+/* Import animations' types
+ * ==================================== */
+
+@import "animations/properties.scss";
+@import "animations/bounce.scss";
+@import "animations/bounceIn.scss";
+@import "animations/bounceInDown.scss";
+@import "animations/bounceInLeft.scss";
+@import "animations/bounceInRight.scss";
+@import "animations/bounceInUp.scss";
+@import "animations/bounceOut.scss";
+@import "animations/bounceOutDown.scss";
+@import "animations/bounceOutLeft.scss";
+@import "animations/bounceOutRight.scss";
+@import "animations/bounceOutUp.scss";
+@import "animations/fadeIn.scss";
+@import "animations/fadeInDown.scss";
+@import "animations/fadeInDownBig.scss";
+@import "animations/fadeInLeft.scss";
+@import "animations/fadeInLeftBig.scss";
+@import "animations/fadeInRight.scss";
+@import "animations/fadeInRightBig.scss";
+@import "animations/fadeInUp.scss";
+@import "animations/fadeInUpBig.scss";
+@import "animations/fadeOut.scss";
+@import "animations/fadeOutDown.scss";
+@import "animations/fadeOutDownBig.scss";
+@import "animations/fadeOutLeft.scss";
+@import "animations/fadeOutLeftBig.scss";
+@import "animations/fadeOutRight.scss";
+@import "animations/fadeOutRightBig.scss";
+@import "animations/fadeOutUp.scss";
+@import "animations/fadeOutUpBig.scss";
+@import "animations/flash.scss";
+@import "animations/flip.scss";
+@import "animations/flipInX.scss";
+@import "animations/flipInY.scss";
+@import "animations/flipOutX.scss";
+@import "animations/flipOutY.scss";
+@import "animations/hinge.scss";
+@import "animations/lightSpeedIn.scss";
+@import "animations/lightSpeedOut.scss";
+@import "animations/pulse.scss";
+@import "animations/slideInUp.scss";
+@import "animations/slideInDown.scss";
+@import "animations/slideOutUp.scss";
+@import "animations/rollIn.scss";
+@import "animations/rollOut.scss";
+@import "animations/rotateIn.scss";
+@import "animations/rotateInDownLeft.scss";
+@import "animations/rotateInDownRight.scss";
+@import "animations/rotateInUpLeft.scss";
+@import "animations/rotateInUpRight.scss";
+@import "animations/rotateOut.scss";
+@import "animations/rotateOutDownLeft.scss";
+@import "animations/rotateOutDownRight.scss";
+@import "animations/rotateOutUpLeft.scss";
+@import "animations/rotateOutUpRight.scss";
+@import "animations/shake.scss";
+@import "animations/swing.scss";
+@import "animations/tada.scss";
+@import "animations/wiggle.scss";
+@import "animations/wobble.scss";
+
+
+/* Start animation when the class is animated
+ * ==================================== */
+
+.bounce {
+	&.animated { @include bounce($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.bounceIn {
+	&.animated { @include bounceIn($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.bounceInDown {
+	&.animated { @include bounceInDown($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.bounceInLeft {
+	&.animated { @include bounceInLeft($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.bounceInRight {
+	&.animated { @include bounceInRight($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.bounceInUp {
+	&.animated { @include bounceInUp($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.bounceOut {
+	&.animated { @include bounceOut($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.bounceOutDown {
+	&.animated { @include bounceOutDown($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.bounceOutLeft {
+	&.animated { @include bounceOutLeft($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.bounceOutRight {
+	&.animated { @include bounceOutRight($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.bounceOutUp {
+	&.animated { @include bounceOutUp($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeIn {
+	&.animated { @include fadeIn($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeInDown {
+	&.animated { @include fadeInDown($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeInDownBig {
+	&.animated { @include fadeInDownBig($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeInLeft {
+	&.animated { @include fadeInLeft($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeInLeftBig {
+	&.animated { @include fadeInLeftBig($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeInRight {
+	&.animated { @include fadeInRight($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeInRightBig {
+	&.animated { @include fadeInRightBig($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeInUp {
+	&.animated { @include fadeInUp($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeInUpBig {
+	&.animated { @include fadeInUpBig($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeOut {
+	&.animated { @include fadeOut($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeOutDown {
+	&.animated { @include fadeOutDown($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeOutDownBig {
+	&.animated { @include fadeOutDownBig($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeOutLeft {
+	&.animated { @include fadeOutLeft($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeOutLeftBig {
+	&.animated { @include fadeOutLeftBig($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeOutRight {
+	&.animated { @include fadeOutRight($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeOutRightBig {
+	&.animated { @include fadeOutRightBig($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeOutUp {
+	&.animated { @include fadeOutUp($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.fadeOutUpBig {
+	&.animated { @include fadeOutUpBig($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.flash {
+	&.animated { @include flash($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.flip {
+	&.animated { @include flip($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.flipInX {
+	&.animated { @include flipInX($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.flipInY {
+	&.animated { @include flipInY($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.flipOutX {
+	&.animated { @include flipOutX($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.flipOutY {
+	&.animated { @include flipOutY($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.hinge {
+	&.animated { @include hinge($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.lightSpeedIn {
+	&.animated { @include lightSpeedIn($animation-duration, $animation-delay, $animation-fill, $animation-visibility); }
+}
+.lightSpeedOut {
+	&.animated { @include lightSpeedOut($animation-duration, $animation-delay, $animation-fill, $animation-visibility); }
+}
+.pulse {
+	&.animated { @include pulse($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.slideInDown {
+	&.animated { @include slideInDown($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.slideOutUp {
+	&.animated { @include slideOutUp($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.rollIn {
+	&.animated { @include rollIn($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.rollOut {
+	&.animated { @include rollOut($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.rotateIn {
+	&.animated { @include rotateIn($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.rotateInDownLeft {
+	&.animated { @include rotateInDownLeft($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.rotateInDownRight {
+	&.animated { @include rotateInDownRight($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.rotateInUpLeft {
+	&.animated { @include rotateInUpLeft($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.rotateInUpRight {
+	&.animated { @include rotateInUpRight($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.rotateOut {
+	&.animated { @include rotateOut($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.rotateOutDownLeft {
+	&.animated { @include rotateOutDownLeft($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.rotateOutDownRight {
+	&.animated { @include rotateOutDownRight($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.rotateOutUpLeft {
+	&.animated { @include rotateOutUpLeft($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.rotateOutUpRight {
+	&.animated { @include rotateOutUpRight($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.shake {
+	&.animated { @include shake($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.slideInUp {
+	&.animated { @include slideInUp($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.swing {
+	&.animated { @include swing($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.tada {
+	&.animated { @include tada($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.wiggle {
+	&.animated { @include wiggle($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+.wobble {
+	&.animated { @include wobble($animation-duration, $animation-delay, $animation-function, $animation-fill, $animation-visibility); }
+}
+
+
+/* Add commn property if there is any
+ * ==================================== */
+
+.bounce,
+.bounceIn,
+.bounceInDown,
+.bounceInLeft,
+.bounceInRight,
+.bounceInUp,
+.bounceOut,
+.bounceOutDown,
+.bounceOutLeft,
+.bounceOutRight,
+.bounceOutUp,
+.fadeIn,
+.fadeInDown,
+.fadeInDownBig,
+.fadeInLeft,
+.fadeInLeftBig,
+.fadeInRight,
+.fadeInRightBig,
+.fadeInUp,
+.fadeInUpBig,
+.fadeOut,
+.fadeOutDown,
+.fadeOutDownBig,
+.fadeOutLeft,
+.fadeOutLeftBig,
+.fadeOutRight,
+.fadeOutRightBig,
+.fadeOutUp,
+.fadeOutUpBig,
+.flash,
+.flip,
+.flipInX,
+.flipInY,
+.flipOutX,
+.flipOutY,
+.hinge,
+.lightSpeedIn,
+.lightSpeedOut ,
+.pulse,
+.slideInUp,
+.slideInDown,
+.slideOutUp,
+.rollIn,
+.rollOut,
+.rotateIn,
+.rotateInDownLeft,
+.rotateInDownRight,
+.rotateInUpLeft,
+.rotateInUpRight,
+.rotateOut,
+.rotateOutDownLeft,
+.rotateOutDownRight,
+.rotateOutUpLeft,
+.rotateOutUpRight,
+.shake,
+.swing,
+.tada,
+.wiggle,
+.wobble {
+	// add common properties here.
+}

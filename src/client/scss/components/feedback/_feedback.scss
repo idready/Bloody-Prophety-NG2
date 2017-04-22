@@ -1,0 +1,19 @@
+.feedback-wrapper {
+    
+    align-items: center;
+    background: $white;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    opacity: 0;
+    position: fixed;
+    transition: $default-transition;
+    width: 100vw;
+    z-index: -1;
+    
+    &.is-active {
+        
+        opacity: 1;
+        z-index: 20;
+    }
+}

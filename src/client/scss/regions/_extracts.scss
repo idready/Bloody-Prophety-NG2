@@ -1,0 +1,168 @@
+
+
+/* ===========================================
+ * Author
+ * =========================================== */
+
+/* All styles related to the author part
+ * ==================================== */
+
+@import 'components/pagination';
+
+.extracts {
+
+    background: $white;
+
+    // Specific pagination colors
+    .pagination {
+
+        .pagination-number {
+
+            @include number-color($black, $primary-color);
+        }
+    }
+
+    .extracts-block {
+
+        margin-bottom: 30px;
+        padding: 0 5%;
+
+        .extracts-block__title {
+
+            color: $primary-color;
+            margin-bottom: 30px;
+            position: relative;
+            transition: $default-transition;
+            text-transform: uppercase;
+            // Punishments will come for this...:D
+            &-text {
+
+                display: inline-block;
+                font-size: 30px;
+                margin-left: 10px;
+                padding-left: 35px;
+                position: relative;
+
+                &::before {
+
+                    @include vertical-center();
+
+                    background: $primary-color;
+                    border-radius: 50%;
+                    content: '';
+                    height: 10px;
+                    left: 0;
+                    position: absolute;
+                    width: 10px;
+                }
+            }
+
+            // Icon
+            .icon-elt {
+
+                text-align: center;
+                width: 100%;
+            }
+            .icon {
+
+                display: inline-block;
+            }
+        }
+
+        .extracts-block__content {
+
+            font-size: 28px;
+            text-align: justify;
+        }
+
+        .icon {
+
+            fill: $black;
+            height: 40px;
+            vertical-align: sub;
+            width: 55px;
+        }
+
+        // Separator
+        .separator {
+
+            text-align: center;
+        }
+
+        .separator-points {
+
+            background: lighten($primary-color, 10%);
+            border-radius: 50%;
+            display: inline-block;
+            height: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            width: 15px;
+
+            &::before,
+            &::after {
+
+                border-radius: 50%;
+                content: '';
+                height: 100%;
+                position: absolute;
+                transition: $default-transition;
+                width: 100%;
+            }
+
+            &::before {
+
+                background: lighten($primary-color, 5%);
+                left: -25px;
+            }
+
+            &::after {
+
+                background: $primary-color;
+                right: -25px;
+            }
+
+        }
+
+        @include breakpoint('medium'){
+
+            margin-bottom: 50px;
+            padding-left: 2.5%;
+            padding-right: 2.5%;
+
+            .extracts-block__title {
+
+                &-text {
+
+                    font-size: 36px;
+
+                    &::before {
+
+                        height: 15px;
+                        width: 15px;
+                    }
+                }
+
+                .icon-elt {
+
+                    text-align: center;
+                    width: auto;
+                }
+            }
+
+            .extracts-block__content {
+
+                font-size: 24px;
+            }
+
+            .separator-points {
+
+                height: 10px;
+                margin-bottom: 50px;
+                width: 10px;
+            }
+
+        }
+
+    }
+}

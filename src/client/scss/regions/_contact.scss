@@ -1,0 +1,161 @@
+
+
+/* ===========================================
+ * Contact
+ * =========================================== */
+
+/* All styles related to the contact part
+ * ==================================== */
+
+.contact {
+
+    padding-bottom: 50px;
+    padding-top: 50px;
+
+    .links,
+    .cp-rights {
+
+        font-size: 22px;
+        text-align: center;
+        text-transform: uppercase;
+        transition: $default-transition;
+    }
+
+    .links {
+
+        color: $primary-color;
+        list-style-type: none;
+        margin-bottom: 30px;
+        margin-left: 0; // Cancel default margin
+
+        .links-item {
+
+            border-right: 1px solid $primary-color;
+            display: inline-flex;
+            padding: 0 20px;
+            text-transform: uppercase;
+
+            &:last-child {
+
+                border-right-color: transparent;
+            }
+
+            > a,
+            > span {
+
+                line-height: 1;
+                transition: $default-transition;
+            }
+
+            > a {
+
+                &:hover {
+
+                    color: $secondary-color;
+                }
+            }
+        }
+    }
+
+    .cp-rights {
+
+        color: $black;
+    }
+
+    @include breakpoint('medium'){
+
+        .links,
+        .cp-rights {
+
+            font-size: 22px;
+        }
+
+        .links {
+
+            // font-size: 18px;
+            margin-bottom: 40px;
+
+            .links-item {}
+        }
+    }
+}
+
+// Contact Form
+.contact-form {
+    
+    .contact__message-form {
+        
+        font-family: Tahoma;
+        
+        .contact__message-form-title {
+            
+            color: $white;
+            font-size: 24px;
+            font-family: Tahoma;
+            margin-bottom: $global-margin * 2;
+            transition: $default-transition;
+        }
+        
+        label {
+            
+            color: $white;
+            font-size: 20px;
+        }
+        
+        @include breakpoint('large'){
+            
+            .contact__message-form-title {
+                
+                font-size: 30px;
+            }
+        }
+    }
+    
+    //@TODO: Create component from this
+    .post__message-feedback {
+
+        display: flex;
+
+        &.success {
+            color: $success-color;
+        }
+        &.error {
+            color: $alert-color;
+        }
+
+        .icon {
+
+            height: 15px;
+            width: 15px;
+        }
+
+        .post__message-feedback-icon {
+
+            align-items: center;
+            display: flex;
+            flex: 0 auto;
+            margin-right: 15px;
+        }
+        .post__message-feedback-message {
+
+            flex: 1 auto;
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+
+        @include breakpoint('medium'){
+
+            .icon {
+
+                height: 20px;
+                width: 20px;
+            }
+
+            .post__message-feedback-message {
+                font-size: 18px;
+            }
+        }
+    }
+
+    
+}
