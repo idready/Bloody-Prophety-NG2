@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { WpPageStructure } from '../models/wp.datas-structure.interface';
+
 /**
  * This class represents the lazy loaded HomeComponent.
  */
@@ -11,7 +13,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
+  
+  pages: WpPageStructure[];
+  
   /**
    * Creates an instance of the HomeComponent with the injected
    * ActivatedRoute.
@@ -20,19 +24,38 @@ export class HomeComponent implements OnInit {
    */
   constructor(private route: ActivatedRoute) {}
 
-  /**
-   * Get pages datas
-   */
-  ngOnInit() {
-    this.route.data
-    .map(response => response)
-    .subscribe((datas: any) => {
-        console.info(datas);
-    })
-  }
+    /**
+    * Get pages datas
+    */
+    ngOnInit() {
+        
+        this.pages = [];
+        // Fetch datas from resolve
+        this.route.data
+        .subscribe((response: WpPageStructure[]) => {
 
-  OnDestroy() {
-     console.info('Destroying home component');
-  }
+            let sortedPages : any = response['home' as any]; //@TODO: Solve this any
+            sortedPages
+            .sort((first: WpPageStructure, second: WpPageStructure) => {
+                /**
+                 * Sort pages with position attribute
+                 */
+                return first.acf.page_position - second.acf.page_position;
+            })
+            .map((element: WpPageStructure, index: number) => {
+                /**
+                 * [key Makes pages index easily reachable on templates]
+                 * @type {[type]}
+                 */
+                let key: string | number = element.acf.page_id || 'blog';
+                console.info(key);
+                this.pages[key as any] = element;
+            });
+        });
+    }
+
+    OnDestroy() {
+        console.info('Destroying home component');
+    }
 
 }

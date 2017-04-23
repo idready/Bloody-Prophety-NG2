@@ -13,10 +13,15 @@ export class BlogResolverService implements Resolve<WpApiService> {
     ) { 
         console.info('called constructor');
     }
-    
+    /**
+     * [resolve Retrieves datas before Home componennt loads]
+     * @param  {ActivatedRouteSnapshot}   route [description]
+     * @param  {RouterStateSnapshot}      state [description]
+     * @return {Observable<WpApiService>}       [Returns response already flatten with json fn of RxJs]
+     */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<WpApiService>{
-        console.warn('Resolving blog');
-        return this.wpapi.getPages();
+        
+        return this.wpapi.getPosts();
     }
 
 }

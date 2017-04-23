@@ -4,6 +4,8 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs';
 
 import { WpConfig } from '../models/wp.config.interface';
+import { WpPageStructure, WpPostStructure } from '../models/wp.datas-structure.interface';
+
 
 @Injectable()
 export class WpApiService {
@@ -31,14 +33,23 @@ export class WpApiService {
     }
     
     /**
-     * [get description]
-     * @param  {[type]} `${this.CONFIG.WP.PAGES}` [description]
-     * @return {[type]}                           [description]
+     * [getPages description]
+     * @return {Observable<any>} [description]
      */
-    getPages = (): Observable<any> => {
-        console.info('Called');
+    getPages(): Observable<any> {
         return this.http
-                   .get(`${this.CONFIG.WP.PAGES}`);
+                   .get(`${this.CONFIG.WP.PAGES}`)
+                   .map(response => response.json());
+    };
+    
+    /**
+     * [getPosts description]
+     * @return {Observable<any>} [description]
+     */
+    getPosts(): Observable<any> {
+        return this.http
+                   .get(`${this.CONFIG.WP.POSTS}`)
+                   .map(response => response.json());
     };
 
 }
