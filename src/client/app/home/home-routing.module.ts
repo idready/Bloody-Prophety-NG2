@@ -7,7 +7,7 @@ import { HomeResolverService } from './home-resolver.service';
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: '', component: HomeComponent, pathMatch: 'full', resolve: { home: HomeResolverService}}
+      { path: '', component: HomeComponent, resolve: { home: HomeResolverService}}
     ])
   ],
   exports: [RouterModule],

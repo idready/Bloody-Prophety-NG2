@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-// import { NameListService } from '../shared/name-list/name-list.service';
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -13,20 +12,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  newName: string = '';
-  errorMessage: string;
-  names: any[] = [];
-
   /**
    * Creates an instance of the HomeComponent with the injected
-   * NameListService.
+   * ActivatedRoute.
    *
-   * @param {NameListService} nameListService - The injected NameListService.
+   * @param {ActivatedRoute} ActivatedRoute - The injected ActivatedRoute.
    */
   constructor(private route: ActivatedRoute) {}
 
   /**
-   * Get the names OnInit
+   * Get pages datas
    */
   ngOnInit() {
     this.route.data
@@ -36,30 +31,8 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  /**
-   * Handle the nameListService observable
-   */
-  getNames() {
-    // this.nameListService.get()
-    //   .subscribe(
-    //     names => this.names = names,
-    //     error => this.errorMessage = <any>error
-    //   );
-  }
-
-  /**
-   * Pushes a new name onto the names array
-   * @return {boolean} false to prevent default form submit behavior to refresh the page.
-   */
-  addName(): boolean {
-    // TODO: implement nameListService.post
-    // this.names.push(this.newName);
-    // this.newName = '';
-    return false;
-  }
-
   OnDestroy() {
-     console.info('destroy');
+     console.info('Destroying home component');
   }
 
 }

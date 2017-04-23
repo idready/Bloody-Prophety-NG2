@@ -20,7 +20,7 @@ import { PageSectionsModule } from './page-sections/page-sections.module';
   ],
   /* exports represents all component made public to any module importing this module. */
   exports: [HomeComponent],
-  /* Each resolving component route based must provide used services on resolver */
+  /* Each resolved component route based must provide used services on resolver */
   providers: [WpApiService]
 })
 export class HomeModule { }
