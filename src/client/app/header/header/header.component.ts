@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+
 
 @Component({
   moduleId: module.id,
@@ -12,16 +12,13 @@ export class HeaderComponent implements OnInit {
 
   linkIndex: number;
 
-  constructor(private http: Http) {
+  constructor() {
     console.info('initialized header component');
   }
 
   ngOnInit() {
-
+      
     this.linkIndex = 0;
-    this.http.get('wp-json/wp/v2/posts')
-        .map((datas: any) => console.info(datas))
-        .subscribe((response: any) => console.info(response));
   }
 
   /**
