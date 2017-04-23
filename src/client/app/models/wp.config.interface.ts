@@ -14,6 +14,6 @@ interface CommentsStatus {
 }
 
 export interface WpConfig {
-    readonly WP?:: Wp;
+    readonly WP?: Wp;
     readonly COMMENTS_STATUS?: CommentsStatus;
 }

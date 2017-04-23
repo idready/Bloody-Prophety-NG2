@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 // import { NameListService } from '../shared/name-list/name-list.service';
 
 /**
@@ -22,14 +23,17 @@ export class HomeComponent implements OnInit {
    *
    * @param {NameListService} nameListService - The injected NameListService.
    */
-  constructor() {}
-  // constructor(public nameListService: NameListService) {}
+  constructor(private route: ActivatedRoute) {}
 
   /**
    * Get the names OnInit
    */
   ngOnInit() {
-    this.getNames();
+    this.route.data
+    .map(response => response)
+    .subscribe((datas: any) => {
+        console.info(datas);
+    })
   }
 
   /**

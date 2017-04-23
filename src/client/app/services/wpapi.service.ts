@@ -6,18 +6,18 @@ import { Observable } from 'rxjs';
 import { WpConfig } from '../models/wp.config.interface';
 
 @Injectable()
-export class WpapiService {
+export class WpApiService {
     
     private CONFIG: WpConfig;
     
     constructor(private http: Http) {
         
         this.CONFIG = {
-            Wp: {
-                PAGES: "/wp/v2/pages",
-                POSTS: "/wp/v2/posts",
-                COMMENTS: "/wp/v2/comments",
-                CATEGORIES: "/wp/v2/catgories"
+            WP: {
+                PAGES: "/wp-json/wp/v2/pages",
+                POSTS: "/wp-json/wp/v2/posts",
+                COMMENTS: "/wp-json/wp/v2/comments",
+                CATEGORIES: "/wp-json/wp/v2/catgories"
             },
             COMMENTS_STATUS: {
                 APPROVE: "APPROVE",
@@ -36,7 +36,7 @@ export class WpapiService {
      * @return {[type]}                           [description]
      */
     getPages = (): Observable<any> => {
-        
+        console.info('Called');
         return this.http
                    .get(`${this.CONFIG.WP.PAGES}`);
     };

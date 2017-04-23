@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { WpapiService } from './wpapi.service';
+import { WpApiService } from './wpapi.service';
 
-describe('WpapiService', () => {
+describe('WpApiService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [WpapiService]
+      providers: [WpApiService]
     });
   });
 
-  it('should ...', inject([WpapiService], (service: WpapiService) => {
+  it('should ...', inject([WpApiService], (service: WpApiService) => {
     expect(service).toBeTruthy();
   }));
 });
