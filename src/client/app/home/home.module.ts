@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+
+import { WpApiService } from '../services/wpapi.service';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -18,6 +20,7 @@ import { PageSectionsModule } from './page-sections/page-sections.module';
   ],
   /* exports represents all component made public to any module importing this module. */
   exports: [HomeComponent],
-  providers: []
+  /* Each resolved component route based must provide used services on resolver */
+  providers: [WpApiService]
 })
 export class HomeModule { }
