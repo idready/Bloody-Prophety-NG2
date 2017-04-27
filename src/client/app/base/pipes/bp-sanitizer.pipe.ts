@@ -19,7 +19,7 @@ export class BpSanitizerPipe implements PipeTransform {
     transform(value: any, context: string, ...args: string[]): any {
         
         let sanitizeUtils: {[index: string]: Function} = {
-            'NONE': () => this._sanitizer.sanitize(SecurityContext.HTML, value),
+            'NONE': () => this._sanitizer.sanitize(SecurityContext.NONE, value),
             'URL': () => this._sanitizer.bypassSecurityTrustUrl(value),
             'HTML': () => this._sanitizer.bypassSecurityTrustHtml(value),
             'CSS': () => this._sanitizer.bypassSecurityTrustStyle(value),

@@ -19,7 +19,7 @@ export class BpSvgDirective implements OnInit {
     
     ngOnInit(){
         
-        let svgFileName: string = this.file && this.file !== 'svg-defs' ? this.file : 'svg-defs';
+        let svgFileName: string = (this.file && this.file !== 'svg-defs') ? this.file : 'svg-defs';
         
         this.element.nativeElement.innerHTML = `<svg class="icon icon-${this.name}" role="img">
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg-def/${svgFileName}.svg#shapes-icon-${this.name}"></use>
