@@ -1,3 +1,46 @@
-<p [ngStyle]="{'color': 'white', 'display': 'block'}">
-  book works!
-</p>
+<section class="book" id="{{_datas.acf.page_id}}" class="animated fadeInUp">
+    <div class="row">
+        <div class="small-12 large-6">
+            <div class="book-cover">
+                <div class="book-cover__title"></div>
+                <div class="book-cover__image">
+                    <!-- @TODO: Add device's width image with srcset -->
+                    <img src="{{_datas.acf.couverture_livre.url}}" alt="{{_datas.acf.couverture_livre.alt}}" class="lazyload">
+                </div>
+            </div>
+        </div>
+        <div class="small-12 large-6">
+            <div class="book-tease">
+                <blockquote>
+                    <p [innerHTML]="_quote.content"></p>
+                    <footer>
+                        <cite><a [href]="_quote.link | bpSanitizer: 'url'" target="_blank" rel="noopener" class=""><span [innerHTML]="_quote.author"></span></a></cite>
+                    </footer>
+                </blockquote>
+                <p class="book-tease__quote"></p>
+            </div>
+
+            <div class="book-retailers">
+                <p class="book-retailers__info">Disponble en librairies mais aussi sur : </p>
+                <div class="retailers-links">
+                    <a href="https://www.amazon.fr/Proph%C3%A9tie-du-Sang-William-Harker-ebook/dp/B00PZ8FKI4" target="_blank" rel="noreferrer">
+                        <!-- @TODO: Fix svg className pain :D -->
+                        <i class="icon-item" bpSvg [svgName]="'amazon'" ></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="book-retailers">
+                <p class="book-retailers__info">Ils en parlent aussi : </p>
+                <div class="retailers-links">
+                    <a href="http://www.babelio.com/livres/Harker-La-Prophetie-du-Sang/719457" target="_blank" rel="noreferrer">
+                        <span class="icon-elt">
+                            <img src="assets/network/logo_babelio_new.jpg" width="250px" alt="image réseau">
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -29,6 +29,9 @@ interface ACF {
     page_position?: number;
     extraits_livre?: string;
     page_id: string | number; // Type-check makes verification based on this order
+    citatation_auteur?: string | null | undefined;
+    partenaires: string;
+    revendeurs: string;
 }
 
 /**
@@ -59,7 +62,6 @@ export interface WpPageStructure {
     menu_order: number;
     meta: Array<object>;
     template:  string;
-    test_me: number;
 }
 
 /**

@@ -32,9 +32,9 @@ export class HomeComponent implements OnInit {
         this.pages = [];
         // Fetch datas from resolve
         this.route.data
-        .subscribe((response: WpPageStructure[]) => {
+        .subscribe((response: {[index:string] : WpPageStructure[]}) => {
 
-            let sortedPages : any = response['home' as any]; //@TODO: Solve this any
+            let sortedPages : any = response['home']
             sortedPages
             .sort((first: WpPageStructure, second: WpPageStructure) => {
                 /**
@@ -47,10 +47,11 @@ export class HomeComponent implements OnInit {
                  * [key Makes pages index easily reachable on templates]
                  * @type {[type]}
                  */
-                let key: string | number = element.acf.page_id || 'blog';
-                console.info(key);
+                let key: number | string = element.acf.page_id || 'blog';
+                // @TODO: Fix this too
                 this.pages[key as any] = element;
             });
+            console.info(this.pages);
         });
     }
 
