@@ -14,14 +14,21 @@ export class BpSvgDirective implements OnInit {
      * @param  string 'svgFile' [description]
      */
     @Input('svgFile') file: string;
-    
+    /**
+     * 
+     * Here is an example of usage
+     * <i class="icon icon-item" bpSvg [svgName]="'amazon'" ></i>
+     * Is it preferable to add class icon on the container in which the svg content is injected
+     * 
+     * @param  {ElementRef} element [description]
+     */
     constructor(private element: ElementRef){}
     
     ngOnInit(){
         
         let svgFileName: string = (this.file && this.file !== 'svg-defs') ? this.file : 'svg-defs';
         
-        this.element.nativeElement.innerHTML = `<svg class="icon icon-${this.name}" role="img">
+        this.element.nativeElement.innerHTML = `<svg class="svg icon-${this.name}" role="img">
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg-def/${svgFileName}.svg#shapes-icon-${this.name}"></use>
         </svg>`;
     }
