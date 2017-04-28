@@ -14,7 +14,7 @@ import { ExtractsService } from '../services/extracts.service';
 export class BookComponent implements OnInit {
     
     private _datas: WpPageStructure;
-    private _quote: Quote | Quote[];
+    protected quote: Quote | Quote[];
     /**
      * [Input Datas received from resolved route]
      * @return {WpPageStructure} [description]
@@ -28,10 +28,10 @@ export class BookComponent implements OnInit {
         return this._datas;
     }
 
-    constructor(private extractsService: ExtractsService) {}
+    constructor(private extractsService: ExtractsService){}
 
     ngOnInit() {
-        this._quote = this.extractsService.extractContent(this._datas.acf.citatation_auteur, ['content', 'author', 'link'], '<ligne>');
+        this.quote = this.extractsService.extractContent(this._datas.acf.citatation_auteur, ['content', 'author', 'link'], '<ligne>');
     }
 
 }

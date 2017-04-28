@@ -1,3 +1,21 @@
-<p [ngStyle]="{'color': 'white', 'display': 'block'}">
-  extracts works!
-</p>
+<section class="extracts" [id]="_datas.acf.page_id">
+    <div class="pagination">
+        <div class="pagination-number">
+            <p class="pagination-number__shape">
+                <span class="pagination-number__text" [innerHTML]="_datas.acf.page_position"></span>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Single extract -->
+        <div class="extracts-block" *ngFor="let extract of quotes">
+            <h4 class="extracts-block__title">
+                <i class="icon icon-item" bpSvg [svgName]="'book'" ></i>
+                <span class="extracts-block__title-text" [innerHTML]="extract.title"></span>
+            </h4>
+            <p class="extracts-block__content">
+                <span [innerHTML]="extract.content"></span>
+            </p>
+        </div>
+    </div>
+</section>

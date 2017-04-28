@@ -12,12 +12,12 @@
         <div class="small-12 large-6">
             <div class="book-tease">
                 <blockquote>
-                    <p [innerHTML]="_quote.content"></p>
+                    <p [innerHTML]="quote.content"></p>
                     <footer>
-                        <cite><a [href]="_quote.link | bpSanitizer: 'url'" target="_blank" rel="noopener" class=""><span [innerHTML]="_quote.author"></span></a></cite>
+                        <cite><a [href]="quote.link | bpSanitizer: 'url'" target="_blank" rel="noopener" class=""><span [innerHTML]="quote.author"></span></a></cite>
                     </footer>
                 </blockquote>
-                <p class="book-tease__quote"></p>
+                <p class="book-tease_quote"></p>
             </div>
 
             <div class="book-retailers">
