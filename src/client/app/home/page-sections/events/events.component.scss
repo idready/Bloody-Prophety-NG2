@@ -1,0 +1,192 @@
+
+/* ===========================================
+ * Events
+ * =========================================== */
+
+/* All styles related to the events part
+ * ==================================== */
+
+@import '../../../../scss/core/scss/util/util';
+@import '../../../../scss/core/scss/settings/settings';
+@import '../../../../scss/components/variables';
+@import '../../../../scss/core/scss/util/breakpoint';
+@import '../../../../scss/regions/components/pagination';
+
+:host {
+    flex: 1 0 100%;
+}
+ 
+.events {
+
+    background: $secondary-color;
+    padding: 0 5%;
+    
+    &,
+    .event-title,
+    .title {
+        font-family: tahoma;
+    }
+    
+    // Specific pagination colors
+    .pagination {
+
+        .pagination-number {
+            @include number-color($primary-color, $white, $primary-color);
+        }
+    }
+
+    .title {
+
+        color: $white;
+        font-size: 30px;
+        margin-bottom: 30px;
+        margin-left: 30px;
+    }
+
+    .event {
+
+        color: $white;
+        // font-family: Tahoma;
+        margin-bottom: 40px;
+        padding-left: 30px;
+
+        .icon {
+
+            fill: currentColor;
+            max-height: 30px;
+        }
+
+        .phone-link,
+        .map-link {
+
+            color: $white;
+            transition: $default-transition;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+
+        .event-title {
+
+            font-size: 30px;
+            position: relative;
+            text-decoration: underline;
+
+            //Bullet ornament
+            &::before {
+
+                @include vertical-center();
+                background: $primary-color;
+                border-radius: 50%;
+                content: '';
+                height: 10px;
+                left: -30px;
+                transition: $default-transition;
+                position: absolute;
+                width: 10px;
+            }
+        }
+        .event-title,
+        .event-content {
+            text-align: left;
+        }
+        .event-content {
+
+            font-size: 16px;
+            margin: 20px 0;
+        }
+        .event-date,
+        .event-location,
+        .event-contact {
+
+            display: block;
+            font-size: 15px;
+        }
+
+        .event-contact {
+
+            > a {
+
+                color: $white;
+                transition: default-transition;
+
+                &:hover {
+
+                    color: $primary-color;
+                }
+            }
+        }
+
+        //States
+        &.finished {
+            opacity: 0.5;
+        }
+    }
+
+    .show-more-events {
+
+        color: $primary-color;
+        flex: 1 1 auto;
+        font-size: 24px;
+        margin: { //Test namespace
+            bottom: 30px;
+            top: 30px;
+        }
+        text-align: center;
+
+        [type="button"] {
+
+            text-transform: uppercase;
+            transition: $default-transition;
+        }
+    }
+
+    @include breakpoint('medium'){
+
+        // margin-bottom: 60px;
+
+        .title {
+
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .event {
+
+            .event-date,
+            .event-location {
+
+                margin-right: 40px;
+            }
+            .event-date,
+            .event-location,
+            .event-contact {
+
+                display: inline-flex;
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+            .event-title {
+
+                font-size: 36px;
+
+                &::before {
+
+                    height: 15px;
+                    width: 15px;
+                }
+            }
+            .event-content {
+                font-size: 18px;
+            }
+
+        }
+
+        .show-more-events {
+
+            margin-bottom: 60px;
+            margin-top: 40px;
+        }
+    }
+}

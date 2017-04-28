@@ -8,14 +8,15 @@ import { ContactComponent } from './contact/contact.component';
 
 import { ExtractsService } from './services/extracts.service';
 import { BaseModule } from '../../base/base.module';
+import { EventsComponent } from './events/events.component';
 
 @NgModule({
   imports: [
     CommonModule,
     BaseModule
   ],
-  declarations: [BookComponent, AuthorComponent, ExtractsComponent, ContactComponent],
-  exports: [BookComponent, AuthorComponent, ExtractsComponent, ContactComponent],
+  declarations: [BookComponent, AuthorComponent, ExtractsComponent, ContactComponent, EventsComponent],
+  exports: [BookComponent, AuthorComponent, ExtractsComponent, ContactComponent, EventsComponent],
   providers: [ExtractsService]
 })
 export class PageSectionsModule { }

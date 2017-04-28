@@ -7,7 +7,6 @@ import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { PageSectionsModule } from './page-sections/page-sections.module';
 
-
 @NgModule({
   /* import [] is all module used and necesary for this module to work properly. */
   imports: [
