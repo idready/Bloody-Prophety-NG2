@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 
 import { Http } from '@angular/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Rx';
 
 import { Config } from './../shared/config/env.config';
 import { WpConfig } from '../models/wp.config.interface';
+import { StorageService } from './storage.service';
 import { WpPageStructure, WpPostStructure } from '../models/wp.datas-structure.interface';
 
 
@@ -14,7 +15,7 @@ export class WpApiService {
     private CONFIG: WpConfig;
     private isProd: string;
     
-    constructor(private http: Http) {
+    constructor(private http: Http, private storage: StorageService) {
         
         this.isProd = (Config.ENV === 'PROD')? 'wp':'';
         
@@ -41,9 +42,19 @@ export class WpApiService {
      * @return {Observable<any>} [description]
      */
     getPages(): Observable<any> {
+        
+        // Use storage for uneditable datas like comments
+        // let pages: WpPageStructure[] | any = this.storage.get('WP_PAGES'); 
+        // if(pages) {
+        //     return Observable.of(pages);
+        // };
+        
         return this.http
                    .get(`${this.CONFIG.WP.PAGES}`)
-                   .map(response => response.json());
+                   .map(response => {
+                       this.storage.set('WP_PAGES', response.json());
+                       return response.json();
+                    });
     };
     
     /**
@@ -51,9 +62,19 @@ export class WpApiService {
      * @return {Observable<any>} [description]
      */
     getPosts(): Observable<any> {
+        
+        // let posts: WpPageStructure[] | any = this.storage.get('WP_POSTS'); 
+        // if(posts) {
+        //     return Observable.of(posts);
+        // };
+        
         return this.http
                    .get(`${this.CONFIG.WP.POSTS}`)
-                   .map(response => response.json());
+                   .map(response => {
+                       
+                       this.storage.set('WP_POSTS', response.json());
+                       return response.json();
+                   });
     };
 
 }

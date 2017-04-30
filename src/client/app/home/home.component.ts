@@ -55,8 +55,5 @@ export class HomeComponent implements OnInit {
         });
     }
 
-    OnDestroy() {
-        console.info('Destroying home component');
-    }
 
 }
