@@ -6,18 +6,18 @@ import { ElementRef, Directive, Input, OnInit } from '@angular/core';
 export class BpSvgDirective implements OnInit {
     /**
      * [Input Svg isDecorative, checks if we should flag the svg as decorative by adding an attribute aria-hidden]
-     * @param  boolean 'svgTitle' [Used an alias just as a test]
+     * @param  boolean 'isDecorative' [Used an alias just for the test]
      * Refer to https://css-tricks.com/accessible-svgs/ for more infos
      */
     @Input('svgIsDecorative') isDecorative: boolean = false;
     /**
      * [Input Svg title, here we are dealing with the svg fragment (id)]
-     * @param  string 'svgTitle' [Used an alias just as a test]
+     * @param  string 'svgTitle' [Used an alias just for the test]
      */
     @Input('svgTitle') title: string = '';
     /**
      * [Input Svg name, here we are dealing with the svg fragment (id)]
-     * @param  string 'svgName' [Used an alias just as a test]
+     * @param  string 'svgName' [Used an alias just for the test]
      */
     @Input('svgName') name: string;
     /**
