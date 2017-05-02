@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { WpPageStructure } from '../../../models/wp.datas-structure.interface';
+
 @Component({
   moduleId: module.id,
   selector: 'bp-author',
@@ -8,12 +10,23 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AuthorComponent implements OnInit {
   
-  @Input() datas: any;
-  
-  constructor() { }
+  private _datas: WpPageStructure;
 
-  ngOnInit() {
-      console.info('Init author ', this.datas);
+  /**
+   * [Input Datas received from resolved route]
+   * @return {WpPageStructure} [description]
+   */
+  @Input() 
+  set datas(datas: WpPageStructure) {
+      this._datas = datas;
   }
+  
+  get datas(): WpPageStructure {
+      return this._datas;
+  }
+  
+  constructor(){}
+
+  ngOnInit() {}
 
 }

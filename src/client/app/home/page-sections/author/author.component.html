@@ -1,3 +1,22 @@
-<p [ngStyle]="{'color': 'white', 'display': 'block'}">
-  author works!
-</p>
+<section class="author animated fadeInUp" [id]="_datas.acf.page_id">
+    <div class="pagination">
+        <div class="pagination-number">
+            <p class="pagination-number__shape">
+                <span class="pagination-number__text" [innerHTML]="_datas.acf.page_position"></span>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 large-6">
+            <div class="author-bio">
+                <h3 class="author-bio__title" [innerHTML]="_datas.acf.nom_auteur"></h3>
+                <p class="author-bio__text" [innerHTML]="_datas.acf.presentation_auteur"></p>
+            </div>
+        </div>
+        <div class="small-12 large-6">
+            <div class="author-photo">
+                <img [src]="_datas.acf.photo_auteur.sizes.large" [alt]="_datas.acf.photo_auteur.alt" class="lazyload">
+            </div>
+        </div>
+    </div>
+</section>

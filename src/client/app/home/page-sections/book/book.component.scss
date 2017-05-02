@@ -9,10 +9,15 @@
 @import '../../../../scss/core/scss/settings/settings';
 @import '../../../../scss/components/variables';
 @import '../../../../scss/core/scss/util/breakpoint';
+@import '../../../../scss/components/icons/icons';
 
 :host {
     flex: 1 0 100%;
 }
+
+// :host /deep/ .icon .svg {
+//     fill: red;
+// }
 
 .book {
 
@@ -98,7 +103,7 @@
 
         color: $white;
 
-        .icon {
+        /deep/ .icon {
 
             fill: $white;
         }
@@ -114,7 +119,7 @@
         margin-top: 90px;
     }
 
-    .icon {
+    /deep/ .icon {
 
         fill: currentColor;
         width: 50%;
@@ -127,8 +132,7 @@
             margin-top: 110px;
         }
 
-        .icon {
-
+        /deep/ .icon {
             width: 25%;
         }
     }
