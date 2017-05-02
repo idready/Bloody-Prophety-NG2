@@ -10,12 +10,13 @@
 @import '../../../../scss/core/scss/settings/settings';
 @import '../../../../scss/components/variables';
 @import '../../../../scss/core/scss/util/breakpoint';
+@import '../../../../scss/components/icons/icons';
 @import '../../../../scss/regions/components/pagination';
 
 :host {
     flex: 1 0 100%;
 }
- 
+
 .events {
 
     background: $secondary-color;
@@ -50,7 +51,7 @@
         margin-bottom: 40px;
         padding-left: 30px;
 
-        .icon {
+        /deep/ .icon {
 
             fill: currentColor;
             max-height: 30px;

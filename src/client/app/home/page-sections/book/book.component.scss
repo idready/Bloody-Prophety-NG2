@@ -9,6 +9,7 @@
 @import '../../../../scss/core/scss/settings/settings';
 @import '../../../../scss/components/variables';
 @import '../../../../scss/core/scss/util/breakpoint';
+@import '../../../../scss/components/icons/icons';
 
 :host {
     flex: 1 0 100%;
@@ -102,7 +103,7 @@
 
         color: $white;
 
-        .icon {
+        /deep/ .icon {
 
             fill: $white;
         }
@@ -118,12 +119,10 @@
         margin-top: 90px;
     }
 
-    .icon {
+    /deep/ .icon {
 
-        .svg {
-            fill: currentColor;
-            width: 50%;
-        }
+        fill: currentColor;
+        width: 50%;
     }
 
     // Feeds bigger devices
@@ -133,11 +132,8 @@
             margin-top: 110px;
         }
 
-        .icon {
-
-            .svg {
-                width: 25%;
-            }
+        /deep/ .icon {
+            width: 25%;
         }
     }
 }

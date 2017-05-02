@@ -9,13 +9,13 @@
  @import '../../../../scss/core/scss/util/util';
  @import '../../../../scss/core/scss/settings/settings';
  @import '../../../../scss/components/variables';
+ @import '../../../../scss/components/icons/icons';
  @import '../../../../scss/regions/components/pagination';
 
 
 :host {
     flex: 1 0 100%;
 }
-
 
 .extracts {
 
@@ -71,8 +71,7 @@
                 text-align: center;
                 width: 100%;
             }
-            .icon {
-
+            /deep/ .icon {
                 display: inline-block;
             }
         }
@@ -83,7 +82,7 @@
             text-align: justify;
         }
 
-        .icon {
+        /deep/ .icon {
 
             fill: $black;
             height: 40px;
