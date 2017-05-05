@@ -38,8 +38,8 @@ export class BpSvgDirective implements OnInit {
     ngOnInit(){
         
         let svgFileName: string = (this.file && this.file !== 'svg-defs') ? this.file : 'svg-defs';
-        
-        this.element.nativeElement.innerHTML = `<svg ${this.isDecorative ? 'aria-hidden="true"' : ''} class="icon icon-${this.name}" role="img">
+        // focusable="false" is useful to avoid screenreader to read and IE to focus on the svg
+        this.element.nativeElement.innerHTML = `<svg ${this.isDecorative ? 'aria-hidden="true" focusable="false"' : ''} class="icon icon-${this.name}" role="img">
             <title>${this.title}</title>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg-def/${svgFileName}.svg#shapes-icon-${this.name}"></use>
         </svg>`;
