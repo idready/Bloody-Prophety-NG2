@@ -1,17 +1,20 @@
 import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
-
-import { RouterModule } from '@angular/router';
+import { BaseModule } from '../base/base.module'
+import { WpApiService } from '../services/wpapi.service';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    BaseModule
   ],
   declarations: [HeaderComponent],
-  exports: [HeaderComponent]
+  exports: [HeaderComponent],
+  providers: [WpApiService]
 })
 export class HeaderModule {
 }

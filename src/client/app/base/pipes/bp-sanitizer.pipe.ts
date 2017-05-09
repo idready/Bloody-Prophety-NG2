@@ -16,7 +16,7 @@ export class BpSanitizerPipe implements PipeTransform {
      * @param  {string[]}  ...args [Could be used to send more specific values for any special treatment]
      * @return {any}               [Sanitized value]
      */
-    transform(value: any, context: string, ...args: string[]): any {
+    transform(value: any, context: string = 'none', ...args: string[]): any {
         
         let sanitizeUtils: {[index: string]: Function} = {
             'NONE': () => this._sanitizer.sanitize(SecurityContext.NONE, value),
