@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
     menuLinks: MenuLink[];
     urlFragment: string;
 
-    constructor(private wpApiService: WpApiService, private router: Router, private state: ActivatedRoute) {}
+    constructor(private wpApiService$: WpApiService, private router: Router, private state$: ActivatedRoute) {}
   
     /**
     * [isRouteActivated Checks if the current route is activated]
@@ -36,13 +36,13 @@ export class HeaderComponent implements OnInit {
         this.linkIndex = 0;
         this.urlFragment = '';
 
-        this.state.fragment.subscribe((result) => {
+        this.state$.fragment.subscribe((result) => {
             // Makes sure url fragment is null and not 'null';
             this.urlFragment = !result ? result : `${result}`;
             if(this.menuLinks.length){ this.updateMenuIndex(); }
         });
 
-        this.wpApiService.getPages().subscribe((response: Observable<WpPageStructure>) => {
+        this.wpApiService$.getPages().subscribe((response: Observable<WpPageStructure>) => {
             
             let sortedLinks: WpPageStructure[] = [];
             response.map((link: WpPageStructure) => {
