@@ -7,6 +7,7 @@ import { WindowService } from './services/window.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BaseModule } from './base/base.module';
 
 import { HeaderModule } from './header/header.module';
 import { FooterModule } from './footer/footer.module';
@@ -19,6 +20,7 @@ import { BlogModule } from './blog/blog.module';
     AppRoutingModule,
     BrowserModule,
     HttpModule,
+    BaseModule,
     HeaderModule,
     FooterModule,
     HomeModule,
