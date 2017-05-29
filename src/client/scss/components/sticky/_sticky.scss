@@ -1,9 +1,7 @@
 .is-sticky {
     
-    .header {
-        
-        position: fixed;
-        width: 100%;
-        z-index: 2;
-    }
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 5;
 }

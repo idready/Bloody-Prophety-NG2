@@ -52,19 +52,17 @@ export class StickyHeaderDirective implements OnInit {
             dir => {
                 let body: HTMLBodyElement = this._window.document.querySelector('body');
 
-                console.info(this.element.nativeElement);
                 if(dir === 'UP' /*&& this.lastKnownScrollPos > this.element.nativeElement.height*/){
                     
-                    this.renderer.addClass(body, this.stickyClassName);
+                    // this.renderer.addClass(body, this.stickyClassName);
+                    // this.renderer.addClass((this.renderer.parentNode(this.element.nativeElement)), this.stickyClassName);
                 } else {
                     
                     //@TODO: Find out a proper way
-                    this.renderer.removeClass(body, this.stickyClassName);
-                    // body.classList.remove('fixed');
-                    // this.renderer
+                    // this.renderer.removeClass(body, this.stickyClassName);
+                    // this.renderer.removeClass((this.renderer.parentNode(this.element.nativeElement)), this.stickyClassName);
                 }
                 
-                console.info(`Changed : ${dir}`);
             },
             error => { console.warn(`Error on setting direction : ${error}`)}
         )
