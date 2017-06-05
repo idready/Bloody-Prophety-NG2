@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
+import {Store} from '@ngrx/store';
 
 import { MenuLink } from '../../models/menu.link.interface';
 import { WpPageStructure } from '../../models/wp.datas-structure.interface';
@@ -18,6 +19,8 @@ export class HeaderComponent implements OnInit {
     linkIndex: number;
     menuLinks: MenuLink[];
     urlFragment: string;
+    
+    @Input() store: Store<any>;
 
     constructor(private wpApiService$: WpApiService, private router: Router, private state$: ActivatedRoute) {}
   
