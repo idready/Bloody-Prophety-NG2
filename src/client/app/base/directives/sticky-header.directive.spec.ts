@@ -1,4 +1,4 @@
-import { ElementRef, RendererV2 } from '@angular/core';
+import { ElementRef, Renderer2 } from '@angular/core';
 
 import { StickyHeaderDirective } from './sticky-header.directive';
 import { WindowService } from '../../services/window.service';
@@ -8,7 +8,7 @@ describe('StickyHeaderDirective', () => {
       
     let element: ElementRef;
     let window: any;
-    let renderer: RendererV2;
+    let renderer: Renderer2;
     
     const directive = new StickyHeaderDirective(window, element, renderer);
     expect(directive).toBeTruthy();

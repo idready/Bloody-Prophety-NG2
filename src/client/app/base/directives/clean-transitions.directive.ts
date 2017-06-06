@@ -1,4 +1,4 @@
-import { Directive, ElementRef, OnInit, OnDestroy, Inject, RendererV2 } from '@angular/core';
+import { Directive, ElementRef, OnInit, OnDestroy, Inject, Renderer2 } from '@angular/core';
 import { Observable, Subject } from 'rxjs/RX';
 
 import { WindowService } from '../../services/window.service';
@@ -10,7 +10,7 @@ export class CleanTransitionsDirective {
     
     transitions: Observable<any> = new Observable<any>();
     
-    constructor(@Inject(WindowService) private _window: Window, private element: ElementRef, private renderer: RendererV2) { }
+    constructor(@Inject(WindowService) private _window: Window, private element: ElementRef, private renderer: Renderer2) { }
 
     ngOnInit(){
         this.startListeningEvent('animationend');

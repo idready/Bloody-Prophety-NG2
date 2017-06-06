@@ -1,4 +1,4 @@
-import { Directive, Inject, OnInit, Input, ElementRef, RendererV2 } from '@angular/core';
+import { Directive, Inject, OnInit, Input, ElementRef, Renderer2 } from '@angular/core';
 import { Observable, Subject } from 'rxjs/RX';
 
 import { MenuLink } from '../../models/menu.link.interface';
@@ -17,7 +17,7 @@ export class SmartMenuDirective {
     @Input()
     menuIds: MenuLink[];
     
-    constructor(@Inject(WindowService) private _window: Window, private element: ElementRef, private renderer: RendererV2) { }
+    constructor(@Inject(WindowService) private _window: Window, private element: ElementRef, private renderer: Renderer2) { }
 
     ngOnInit(){
         

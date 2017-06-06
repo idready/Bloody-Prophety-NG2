@@ -1,4 +1,4 @@
-import { ElementRef, RendererV2 } from '@angular/core';
+import { ElementRef, Renderer2 } from '@angular/core';
 
 import { WindowService } from '../../services/window.service';
 import { CleanTransitionsDirective } from './clean-transitions.directive';
@@ -8,7 +8,7 @@ describe('CleanTransitionsDirective', () => {
       
     let element: ElementRef;
     let window: any;
-    let renderer: RendererV2;
+    let renderer: Renderer2;
     
     const directive = new CleanTransitionsDirective(window, element, renderer);
     expect(directive).toBeTruthy();

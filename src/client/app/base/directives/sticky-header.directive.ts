@@ -1,4 +1,4 @@
-import { Inject, ElementRef, Directive, Input, OnInit, OnDestroy, RendererV2 } from '@angular/core';
+import { Inject, ElementRef, Directive, Input, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 
 import { WindowService } from '../../services/window.service';
 import { Observable, Subject } from 'rxjs/RX';
@@ -13,7 +13,7 @@ export class StickyHeaderDirective implements OnInit {
     lastKnownScrollPos: number;
     currentScrollDirection = new Subject<string>();
     
-    constructor(@Inject(WindowService) private _window: Window, private element: ElementRef, private renderer: RendererV2) { }
+    constructor(@Inject(WindowService) private _window: Window, private element: ElementRef, private renderer: Renderer2) { }
     
     ngOnInit(){
         

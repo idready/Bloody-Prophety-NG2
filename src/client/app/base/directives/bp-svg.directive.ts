@@ -1,4 +1,4 @@
-import { ElementRef, Directive, Input, OnInit, RendererV2 } from '@angular/core';
+import { ElementRef, Directive, Input, OnInit, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[bpSvg]'
@@ -32,9 +32,9 @@ export class BpSvgDirective implements OnInit {
      * Is it preferable to add class icon on the container in which the svg content is injected
      * 
      * @param  {ElementRef} element [description]
-     * @param  {RendererV2} renderer [description]
+     * @param  {Renderer2} renderer [description]
      */
-    constructor(private element: ElementRef, private renderer: RendererV2){}
+    constructor(private element: ElementRef, private renderer: Renderer2){}
     
     ngOnInit(){
         
