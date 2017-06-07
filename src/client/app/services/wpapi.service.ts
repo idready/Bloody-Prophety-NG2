@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 
 import { Config } from './../shared/config/env.config';
 import { WpConfig } from '../models/wp.config.interface';

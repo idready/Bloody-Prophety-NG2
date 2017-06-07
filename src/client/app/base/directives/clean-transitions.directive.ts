@@ -1,5 +1,6 @@
 import { Directive, ElementRef, OnInit, OnDestroy, Inject, Renderer2 } from '@angular/core';
-import { Observable, Subject } from 'rxjs/RX';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 import { WindowService } from '../../services/window.service';
 

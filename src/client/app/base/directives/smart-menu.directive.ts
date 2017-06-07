@@ -1,5 +1,6 @@
 import { Directive, Inject, OnInit, Input, ElementRef, Renderer2 } from '@angular/core';
-import { Observable, Subject } from 'rxjs/RX';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 import { MenuLink } from '../../models/menu.link.interface';
 import { WindowService } from '../../services/window.service';
