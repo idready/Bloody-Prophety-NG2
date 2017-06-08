@@ -1,8 +1,13 @@
 import { Inject, ElementRef, Directive, Input, OnInit, OnDestroy, Renderer2 } from '@angular/core';
-
-import { WindowService } from '../../services/window.service';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/distinct';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/filter';
+
+import { WindowService } from '../../services/window.service';
 
 @Directive({
   selector: '[sticky]'
