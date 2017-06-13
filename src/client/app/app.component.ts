@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Config } from './shared/config/env.config';
+import { Store } from '@ngrx/store';
 import './operators';
 
 /**
@@ -12,6 +13,7 @@ import './operators';
   styleUrls: ['app.component.css'],
 })
 export class AppComponent {
+  
   constructor() {
     console.log('Environment config', Config);
   }

@@ -1,11 +1,16 @@
 import { Directive, Inject, OnInit, Input, ElementRef, Renderer2 } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/finally';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/filter';
+import { Store } from '@ngrx/store';
 
+// @TODO: Add constant for Event and avoid this?
+import { HeaderComponent } from '../../header/header/header.component';
+import { MenuState } from '../../models/menu.state';
 import { MenuLink } from '../../models/menu.link.interface';
 import { WindowService } from '../../services/window.service';
 
@@ -22,14 +27,11 @@ export class SmartMenuDirective {
     @Input()
     menuIds: MenuLink[];
     
-    constructor(@Inject(WindowService) private _window: Window, private element: ElementRef, private renderer: Renderer2) { }
+    constructor(@Inject(WindowService) private _window: Window, private element: ElementRef, private renderer: Renderer2, private store: Store<MenuState>) { }
 
     ngOnInit(){
-        
-        console.log(this.menuIds);
-        this.updateMenuItemOffset();
-        this.setActiveMenuItem();
     
+        this.updateMenuItemOffset();
         this.startListeningEvents('scroll', 'resize');
     }
     
@@ -49,8 +51,8 @@ export class SmartMenuDirective {
                                 .map((e: Event) => e);
                                 
         // Update offset and active item
-        this.scroll.subscribe((e: Event) => { console.info('scroll', e); this.setActiveMenuItem()});                                            
-        this.resize.subscribe((e: Event) => { console.info('resize', e); this.updateMenuItemOffset(); });                                            
+        this.scroll.subscribe((e: Event) => { this.setActiveMenuItem(); });                                            
+        this.resize.subscribe((e: Event) => { this.updateMenuItemOffset(); });                                            
     }
     
     /**
@@ -59,37 +61,56 @@ export class SmartMenuDirective {
      */
     updateMenuItemOffset(){
         
-        this.menuIds.forEach((item: MenuLink, index: number, arr: Array<MenuLink>) => {
+        let intervalUpdate: any = this._window.setInterval(() => {
             
-            let menuSection: HTMLElement = <HTMLElement>this._window.document.querySelector(`#${item.page_id}`);
-            // Avoid empty or undefined sections
-            if(menuSection){
+            // @TODO: Try Observable.of(menuIds[])
+            if(this.menuIds.length){this._window.clearInterval(intervalUpdate);}
+            
+            this.menuIds.forEach((item: MenuLink, index: number, arr: Array<MenuLink>) => {
                 
-                this.offset[`${item.page_id}`] = {[`offsetTop`]: menuSection.offsetTop, [`offsetBottom`]: menuSection.offsetTop + menuSection.clientHeight};
-            }
+                let sectionBlock: HTMLElement = <HTMLElement>this._window.document.querySelector(`#${item.page_id}`);
+                // Avoid empty or undefined sections
+                if(sectionBlock){
+                    
+                    this.offset[`${item.page_id}`] = {[`offsetTop`]: sectionBlock.offsetTop, [`offsetBottom`]: sectionBlock.offsetTop + sectionBlock.clientHeight};
+                }
+            });
+            this.setActiveMenuItem();
         });
-        
-        this.setActiveMenuItem();
     }
     
+    /**
+     * [setActiveMenuItem Set current menu index]
+     * @return {[type]} [Dispatch the menu index]
+     */
     setActiveMenuItem(){
-
+        
         this.menuIds.forEach((item: MenuLink, index: number, arr: Array<MenuLink>) => {
-            // console.log(this.offset);
             
-            const debug: {[index: string]: string} = {};
-            console.log(this.offset);
-            if(this.offset[`${item.page_id}`] && Math.floor(this._window.pageYOffset + this.element.nativeElement.clientHeight) >= this.offset[`${item.page_id}`]['offsetTop'] &&
-            Math.floor(this._window.pageYOffset) <= this.offset[`${item.page_id}`]['offsetBottom']){
-                console.info(`In : ${item.page_id}`);
-            } else {
-                debug.id = `${item.page_id}`;
-                debug.offset = this.offset[`${item.page_id}`];
-                debug.wOffset = `${Math.floor(this._window.pageYOffset)}`;
-                console.info('Footer!');
+            if(this.isSectionReached(`${item.page_id}`)){
+            
+                this.store.dispatch({
+                    type: HeaderComponent.MenuEvents.SCROLLED_PAGE,
+                    payload: {index: +item.page_position}
+                });
             }
         });
+
     };
+    
+    /**
+     * [isSectionReached Knows if a section is reached]
+     * @param  {string}  section [description]
+     * @return {boolean}         [description]
+     */
+    isSectionReached(section: string): boolean {
+        
+        if(this.offset[section] && Math.floor(this._window.pageYOffset + this.element.nativeElement.clientHeight) >= this.offset[section]['offsetTop'] 
+        && Math.floor(this._window.pageYOffset) <= this.offset[section]['offsetBottom']){
+            return true;
+        }
+        return false;
+    }
 
     ngOnDestroy(){
         
