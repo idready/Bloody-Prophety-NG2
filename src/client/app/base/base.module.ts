@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { BpSanitizerPipe } from './pipes/bp-sanitizer.pipe';
 import { BpSvgDirective } from './directives/bp-svg.directive';
-import { StickyHeaderDirective } from './directives/sticky-header.directive';
 import { CleanTransitionsDirective } from './directives/clean-transitions.directive';
 import { SmartMenuDirective } from './directives/smart-menu.directive';
 
@@ -11,7 +10,7 @@ import { SmartMenuDirective } from './directives/smart-menu.directive';
   imports: [
     CommonModule
   ],
-  declarations: [BpSanitizerPipe, BpSvgDirective, StickyHeaderDirective, CleanTransitionsDirective, SmartMenuDirective],
-  exports: [BpSanitizerPipe, BpSvgDirective, StickyHeaderDirective, CleanTransitionsDirective, SmartMenuDirective]
+  declarations: [BpSanitizerPipe, BpSvgDirective, CleanTransitionsDirective, SmartMenuDirective],
+  exports: [BpSanitizerPipe, BpSvgDirective, CleanTransitionsDirective, SmartMenuDirective]
 })
 export class BaseModule { }
