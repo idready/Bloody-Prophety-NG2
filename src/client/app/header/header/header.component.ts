@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -51,14 +51,6 @@ export class HeaderComponent implements OnInit {
             this.urlFragment = !result ? result : `${result}`;
             if(this.menuLinks.length){ this.updateMenuIndex(); }
         });
-        
-        // Update index with a slice of store 
-        // this.store.subscribe( (state: MenuState) => {
-        // // this.store.select<MenuState>('headerNavIndex').subscribe( (state: MenuState) => {
-        //     console.info('good? ', state);
-        //     // this.linkIndex = state.index;
-        //     // debugger;
-        // });
         
         this.wpApiService$.getPages().subscribe((response: Observable<WpPageStructure>) => {
             
