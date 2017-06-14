@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
         this.route.data
         .subscribe((response: {[index:string] : WpPageStructure[]}) => {
 
-            let sortedPages : any = response['home']
+            let sortedPages : any = response['home'];
             sortedPages
             .sort((first: WpPageStructure, second: WpPageStructure) => {
                 /**

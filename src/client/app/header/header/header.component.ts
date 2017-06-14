@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import { Store } from '@ngrx/store';
 
 import { MenuLink } from '../../models/menu.link.interface';
+import { MenuState } from '../../models/menu.state';
 import { WpPageStructure } from '../../models/wp.datas-structure.interface';
 import { WpApiService } from '../../services/wpapi.service';
 
@@ -11,15 +14,22 @@ import { WpApiService } from '../../services/wpapi.service';
   selector: 'bp-header',
   templateUrl: 'header.component.html',
   styleUrls: ['header.component.css']
-  // encapsulation: ViewEncapsulation.Emulated
+  // encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent implements OnInit {
 
-    linkIndex: number;
+    linkIndex: Observable<MenuState>;
     menuLinks: MenuLink[];
     urlFragment: string;
 
-    constructor(private wpApiService$: WpApiService, private router: Router, private state$: ActivatedRoute) {}
+    static MenuEvents = {
+        LINK_CLICKED: 'link_clicked',
+        HASH_UPDATED: 'hash_update',
+        SCROLLED_PAGE: 'scrolled_page',
+        RESIZED_PAGE: 'resized_page'
+    };
+    
+    constructor(private wpApiService$: WpApiService, private router: Router, private state$: ActivatedRoute, private store: Store<MenuState>) {}
   
     /**
     * [isRouteActivated Checks if the current route is activated]
@@ -32,16 +42,16 @@ export class HeaderComponent implements OnInit {
   
     ngOnInit() {
 
+        this.linkIndex = this.store.select('headerNavIndex');
         this.menuLinks = [];
-        this.linkIndex = 0;
+        
         this.urlFragment = '';
-
         this.state$.fragment.subscribe((result) => {
             // Makes sure url fragment is null and not 'null';
             this.urlFragment = !result ? result : `${result}`;
             if(this.menuLinks.length){ this.updateMenuIndex(); }
         });
-
+        
         this.wpApiService$.getPages().subscribe((response: Observable<WpPageStructure>) => {
             
             let sortedLinks: WpPageStructure[] = [];
@@ -77,7 +87,12 @@ export class HeaderComponent implements OnInit {
             return link.page_id === this.urlFragment;
         });
 
-        this.linkIndex = menuIndex !== -1 ? menuIndex: 0;
+        this.store.dispatch({
+            type: HeaderComponent.MenuEvents.HASH_UPDATED,
+            payload: {
+                index: menuIndex !== -1 ? menuIndex: 0
+            }
+        });
     }
   
     /**
@@ -86,6 +101,12 @@ export class HeaderComponent implements OnInit {
     * @return undefined      [description]
     */
     setMenuIndex(index: number = 0) {
-        this.linkIndex = index;
+        
+        this.store.dispatch({
+            type: HeaderComponent.MenuEvents.LINK_CLICKED,
+            payload: {
+                index: index
+            }
+        });
     }
 }
