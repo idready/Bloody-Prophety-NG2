@@ -13,8 +13,8 @@ export const MenuReducer: ActionReducer<MenuState> = (state: MenuState = initial
         case HeaderComponent.MenuEvents.HASH_UPDATED:
         case HeaderComponent.MenuEvents.SCROLLED_PAGE:
         case HeaderComponent.MenuEvents.RESIZED_PAGE:
-            console.info('Previous state', state);
-            console.info('Next state', {index: action.payload.index});
+            // console.info('Previous state', state);
+            // console.info('Next state', {index: action.payload.index});
             return Object.assign(state, {}, {index: action.payload.index});
             
         default:
