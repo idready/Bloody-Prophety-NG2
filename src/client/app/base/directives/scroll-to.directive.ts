@@ -42,12 +42,11 @@ export class ScrollToDirective implements OnInit {
         if(event){ event.preventDefault(); }
         
         let target: Element = this._window.document.querySelector(`#${this.domId}`);
-        if(target){
-            
-            let offset: number = (<HTMLElement>target).offsetTop;
-            animateScrollTo(offset);
-        }
-        return false;
+        if(!target){ return false; }
+        
+        let offset: number = (<HTMLElement>target).offsetTop;
+        animateScrollTo(offset);
+        
     }
     
 }
