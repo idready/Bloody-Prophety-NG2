@@ -1,5 +1,4 @@
 import { ScrollToDirective } from './scroll-to.directive';
-
 import { WindowService } from '../../services/window.service';
 
 describe('ScrollToDirective', () => {
