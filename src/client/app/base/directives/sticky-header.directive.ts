@@ -28,6 +28,7 @@ export class StickyHeaderDirective implements OnInit {
         
         this.startListeningEvent('scroll', this._window);
     }
+    
     /**
      * [startListeningEvent description]
      * @param  {string = 'scroll'}    eventName [description]

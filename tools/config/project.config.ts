@@ -87,6 +87,14 @@ export class ProjectConfig extends SeedConfig {
         defaultExtension: 'js',
       }
     });
+    additionalPackages.push({
+      name:'animated-scroll-to',
+      path:'node_modules/animated-scroll-to',
+      packageMeta:{
+        main: 'animated-scroll-to.js',
+        defaultExtension: 'js',
+      }
+    });
     this.addPackagesBundles(additionalPackages);
     delete this.SYSTEM_BUILDER_CONFIG['packageConfigPaths'];
 
