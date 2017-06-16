@@ -2,7 +2,6 @@ import { Directive, Input, OnInit, Inject } from '@angular/core';
 
 import { WindowService } from '../../services/window.service';
 import animateScrollTo from 'animated-scroll-to';
-// import animateScrollTo from 'animated-scroll-to';
 
 @Directive({
   selector: '[scrollTo]',
