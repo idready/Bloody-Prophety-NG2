@@ -1,3 +1,51 @@
-<p [ngStyle]="{'color': 'white', 'display': 'block'}">
-  contact works!
-</p>
+<section id="contact" class="contact-form">
+    <div class="contact__message-form">
+        <div class="row">
+            <h4 class="contact__message-form-title columns">Un message, une question pour moi ? C'est par ici.</h4>
+        </div>
+        <!-- Find out how to get form and post from datas -->
+        <form name="contactForm" id="contactForm" action="/" method="Post" ng-submit="$ctrl.postMessage($event, message, contactForm)" novalidate>
+            <div class="row">
+                <div class="small-12 large-6 columns">
+                    <label>Nom et prénom
+                        <input type="text" name="user_name" placeholder="Nom et prénom" required>
+                    </label>
+                </div>
+                <div class="small-12 large-6 columns">
+                    <label>Email
+                        <input type="email" name="user_email" placeholder="Email" required>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-12 columns">
+                    <label>Message
+                        <textarea placeholder="Votre message" name="content" cols="30" rows="4"></textarea>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    <button class="button large alert" ng-disabled="contactForm.$invalid || recaptchaValidation" type="submit">Ajouter</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="medium-6 columns">
+                    <div id="recaptcha-contact-page" class="g-recaptcha" data-recaptcha-callback="checkContactRecaptchaResponse"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 columns post__message-feedback hidden">
+                    <div class="post__message-feedback-icon">
+                        <i class="icon-elt" bpSvg [svgName]="'checked'"></i>
+                        <i class="icon-elt" bpSvg [svgName]="'close'"></i>
+                        <!-- <svg-cmp ng-if="$ctrl.messageFeedback.status" icon-name="'checked'"></svg-cmp>
+                        <svg-cmp ng-if="messageFeedback.status" icon-name="'close'"></svg-cmp> -->
+                    </div>
+                    <!-- <p class="post__message-feedback-message">{{messageFeedback.message}}</p> -->
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
