@@ -1,7 +1,7 @@
 import { join } from 'path';
 
 import { SeedConfig } from './seed.config';
-// import { ExtendPackages } from './seed.config.interfaces';
+import { ExtendPackages } from './seed.config.interfaces';
 
 /**
  * This class extends the basic seed configuration, allowing for project specific overrides. A few examples can be found
@@ -53,6 +53,16 @@ export class ProjectConfig extends SeedConfig {
       // {src: `${this.CSS_SRC}/path-to-lib/test-lib.css`, inject: true, vendor: false},
     ];
 
+    this.ROLLUP_INCLUDE_DIR = [
+      ...this.ROLLUP_INCLUDE_DIR,
+      //'node_modules/moment/**'
+    ];
+
+    this.ROLLUP_NAMED_EXPORTS = [
+      ...this.ROLLUP_NAMED_EXPORTS,
+      //{'node_modules/immutable/dist/immutable.js': [ 'Map' ]},
+    ];
+
     // Add packages (e.g. ng2-translate)
     // let additionalPackages: ExtendPackages[] = [{
     //   name: 'ng2-translate',
@@ -60,7 +70,33 @@ export class ProjectConfig extends SeedConfig {
     //   path: 'node_modules/ng2-translate/bundles/ng2-translate.umd.js'
     // }];
     //
-    // this.addPackagesBundles(additionalPackages);
+    let additionalPackages: ExtendPackages[] = [];
+    additionalPackages.push({
+      name:'@ngrx/core',
+      path:'node_modules/@ngrx/core/bundles',
+      packageMeta:{
+        main: 'core.min.umd.js',
+        defaultExtension: 'js',
+      }
+    });
+    additionalPackages.push({
+      name:'@ngrx/store',
+      path:'node_modules/@ngrx/store/bundles',
+      packageMeta:{
+        main: 'store.min.umd.js',
+        defaultExtension: 'js',
+      }
+    });
+    additionalPackages.push({
+      name:'animated-scroll-to',
+      path:'node_modules/animated-scroll-to',
+      packageMeta:{
+        main: 'animated-scroll-to.js',
+        defaultExtension: 'js',
+      }
+    });
+    this.addPackagesBundles(additionalPackages);
+    delete this.SYSTEM_BUILDER_CONFIG['packageConfigPaths'];
 
     /* Add proxy middleware */
     this.PROXY_MIDDLEWARE = [

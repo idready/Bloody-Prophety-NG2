@@ -13,7 +13,11 @@
 
 //Positioning only
 :host {
-  flex: 1 0 100%;
+    
+    flex: 1 0 100%;
+    position: sticky;
+    top: 0;
+    z-index: 5;
 }
 
 .header {
