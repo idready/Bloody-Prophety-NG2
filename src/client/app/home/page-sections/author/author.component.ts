@@ -9,22 +9,22 @@ import { WpPageStructure } from '../../../models/wp.datas-structure.interface';
   styleUrls: ['author.component.css']
 })
 export class AuthorComponent implements OnInit {
-  
+
   private _datas: WpPageStructure;
 
   /**
    * [Input Datas received from resolved route]
    * @return {WpPageStructure} [description]
    */
-  @Input() 
+  @Input()
   set datas(datas: WpPageStructure) {
       this._datas = datas;
   }
-  
+
   get datas(): WpPageStructure {
       return this._datas;
   }
-  
+
   constructor(){}
 
   ngOnInit() {}
