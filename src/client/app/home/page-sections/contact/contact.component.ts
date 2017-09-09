@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, Input, Inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Http } from '@angular/http';
+import { Http, Headers, URLSearchParams } from '@angular/http';
 
 import { WindowService } from '../../../services/window.service';
 
@@ -80,21 +80,29 @@ export class ContactComponent implements OnInit, OnChanges {
         if(evt) { evt.preventDefault(); }
         let data : {[index: string]: string} = Object.assign({}, this.contactForm.value);
 
-        this._window.setTimeout(() => {
-
-            this.feedback = (Date.now() % 2) ?
-            {message: 'Merci votre message a été envoyé avec succès.', status: true} :
-            {message: 'Une erreur est survenu, merci de réessayer.', status: false};
-            this.feedback.display = true;
-            this.contactForm.reset();
-        }, 1000);
-
         // @TODO: Change once server available
-        // this.$http.post('requests/handle-mail.php', data)
-        // .subscribe(
-        //     (response: any) => { console.log(data.json); },
-        //     (error: any) => { console.warn(error); }
-        // );
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+        const body = new URLSearchParams();
+        for(let key in data) {
+            body.append(key, data[key]);
+        }
+
+        this.$http.post('/handle-email', body.toString(), {headers})
+        .subscribe(
+            (response: any) => {
+
+                let responseFeedback : any = response.json();
+                console.log(responseFeedback);
+                this.setFeedback({message: responseFeedback.message,
+                    status: (responseFeedback.errors || !responseFeedback.valid) ? false : true, display: true});
+
+                this.contactForm.reset();
+                debugger;
+            },
+            (error: any) => { console.warn(error); }
+        );
     }
 
     resetFeedback() {
@@ -104,6 +112,10 @@ export class ContactComponent implements OnInit, OnChanges {
             status: false,
             display: false
         };
+    }
+
+    setFeedback(values: any) {
+        this.feedback = Object.assign(this.feedback, values);
     }
 
     logNameChange() {

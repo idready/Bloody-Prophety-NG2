@@ -100,7 +100,9 @@ export class ProjectConfig extends SeedConfig {
 
     /* Add proxy middleware */
     this.PROXY_MIDDLEWARE = [
-      require('http-proxy-middleware')('/wp-json', { ws: false, target: 'http://localhost:9000/' })
+      require('http-proxy-middleware')('/wp-json', { ws: false, target: 'http://localhost:9000/' }),
+      require('http-proxy-middleware')('/handle-email',
+      { ws: false, target: 'http://localhost:9000/wp-content/themes/bloodyprophetie/requests/handle-mail.php' })
     ];
 
     /* Add to or override NPM module configurations: */
