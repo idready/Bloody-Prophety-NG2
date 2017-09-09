@@ -10,7 +10,7 @@ export class BlogResolverService implements Resolve<WpApiService> {
     constructor(
         private wpapi: WpApiService,
         private router: Router
-    ) { 
+    ) {
         console.info('called constructor');
     }
     /**
@@ -20,7 +20,7 @@ export class BlogResolverService implements Resolve<WpApiService> {
      * @return {Observable<WpApiService>}       [Returns response already flatten with json fn of RxJs]
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<WpApiService>{
-        
+
         return this.wpapi.getPosts();
     }
 

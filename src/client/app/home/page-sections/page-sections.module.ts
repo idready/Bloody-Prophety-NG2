@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { BookComponent } from './book/book.component';
 import { AuthorComponent } from './author/author.component';
 import { ExtractsComponent } from './extracts/extracts.component';
@@ -13,7 +15,8 @@ import { EventsComponent } from './events/events.component';
 @NgModule({
   imports: [
     CommonModule,
-    BaseModule
+    BaseModule,
+    ReactiveFormsModule
   ],
   declarations: [BookComponent, AuthorComponent, ExtractsComponent, ContactComponent, EventsComponent],
   exports: [BookComponent, AuthorComponent, ExtractsComponent, ContactComponent, EventsComponent],

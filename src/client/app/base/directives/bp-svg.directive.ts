@@ -26,21 +26,22 @@ export class BpSvgDirective implements OnInit {
      */
     @Input('svgFile') file: string;
     /**
-     * 
+     *
      * Here is an example of usage
      * <i class="icon icon-item" bpSvg [svgName]="'amazon'" ></i>
      * Is it preferable to add class icon on the container in which the svg content is injected
-     * 
+     *
      * @param  {ElementRef} element [description]
      * @param  {Renderer2} renderer [description]
      */
     constructor(private element: ElementRef, private renderer: Renderer2){}
-    
-    ngOnInit(){
-        
+
+    ngOnInit() {
+
         let svgFileName: string = (this.file && this.file !== 'svg-defs') ? this.file : 'svg-defs';
         // focusable="false" is useful to avoid screenreader to read and IE to focus on the svg
-        let svgContent: string = `<svg ${this.isDecorative ? 'aria-hidden="true" focusable="false"' : ''} class="icon icon-${this.name}" role="img">
+        let svgContent: string = `
+            <svg ${this.isDecorative ? 'aria-hidden="true" focusable="false"' : ''} class="icon icon-${this.name}" role="img">
              <title>${this.title}</title>
              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/svg-def/${svgFileName}.svg#shapes-icon-${this.name}"></use>
             </svg>`;

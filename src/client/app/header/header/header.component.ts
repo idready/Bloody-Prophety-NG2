@@ -81,7 +81,7 @@ export class HeaderComponent implements OnInit {
     * [updateMenuIndex Change menu index once the url fragment change]
     * @return undefined [description]
     */
-    updateMenuIndex(){
+    updateMenuIndex() {
 
         // Find the right menu index and compare with the url fragment
         let menuIndex: number = this.menuLinks.findIndex((link: MenuLink, index: number, arr: MenuLink[]):boolean => {
@@ -104,6 +104,7 @@ export class HeaderComponent implements OnInit {
     */
     setMenuIndex(index: number = 0) {
 
+        console.info(`${index}`);
         this.store.dispatch({
             type: HeaderComponent.MenuEvents.LINK_CLICKED,
             payload: {

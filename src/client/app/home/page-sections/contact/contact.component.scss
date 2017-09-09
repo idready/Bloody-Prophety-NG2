@@ -9,15 +9,15 @@
  @import '../../../../scss/core/scss/settings/settings';
  @import '../../../../scss/components/variables';
  @import '../../../../scss/core/scss/util/breakpoint';
- 
+
 :host {
     flex: 1 0 100%;
 }
- 
-.contact {
 
-    padding-bottom: 50px;
-    padding-top: 50px;
+.contact-form {
+
+    padding-bottom: 30px;
+    padding-top: 30px;
 
     .links,
     .cp-rights {
@@ -69,6 +69,19 @@
         color: $black;
     }
 
+    .help-text {
+
+        &.success { color: $success-color; }
+        &.alert { color: $alert-color; }
+
+        /deep/ .icon {
+
+            fill: currentColor;
+            height: 20px;
+            width: 20px;
+        }
+    }
+
     @include breakpoint('medium'){
 
         .links,
@@ -89,35 +102,35 @@
 
 // Contact Form
 .contact-form {
-    
+
     .contact__message-form {
-        
+
         font-family: Tahoma;
-        
+
         .contact__message-form-title {
-            
+
             color: $white;
             font-size: 24px;
             font-family: Tahoma;
             margin-bottom: $global-margin * 2;
             transition: $default-transition;
         }
-        
+
         label {
-            
+
             color: $white;
             font-size: 20px;
         }
-        
+
         @include breakpoint('large'){
-            
+
             .contact__message-form-title {
-                
+
                 font-size: 30px;
             }
         }
     }
-    
+
     //@TODO: Create component from this
     .post__message-feedback {
 
@@ -164,5 +177,5 @@
         }
     }
 
-    
+
 }
