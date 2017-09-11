@@ -89,7 +89,8 @@ export class ContactComponent implements OnInit, OnChanges {
             body.append(key, data[key]);
         }
 
-        this.$http.post('/handle-email', body.toString(), {headers})
+        this.$http.post('/handle-email', JSON.stringify(data), {headers})
+        // this.$http.post('/handle-email', body.toString(), {headers})
         .subscribe(
             (response: any) => {
 
@@ -99,7 +100,6 @@ export class ContactComponent implements OnInit, OnChanges {
                     status: (responseFeedback.errors || !responseFeedback.valid) ? false : true, display: true});
 
                 this.contactForm.reset();
-                debugger;
             },
             (error: any) => { console.warn(error); }
         );
