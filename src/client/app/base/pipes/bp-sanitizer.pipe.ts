@@ -5,7 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   name: 'bpSanitizer'
 })
 export class BpSanitizerPipe implements PipeTransform {
-    
+
     constructor(
         private _sanitizer: DomSanitizer
     ){}
@@ -17,7 +17,7 @@ export class BpSanitizerPipe implements PipeTransform {
      * @return {any}               [Sanitized value]
      */
     transform(value: any, context: string = 'none', ...args: string[]): any {
-        
+
         let sanitizeUtils: {[index: string]: Function} = {
             'NONE': () => this._sanitizer.sanitize(SecurityContext.NONE, value),
             'URL': () => this._sanitizer.bypassSecurityTrustUrl(value),

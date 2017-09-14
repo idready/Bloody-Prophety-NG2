@@ -10,21 +10,21 @@ import { ExtendPackages } from './seed.config.interfaces';
 export class ProjectConfig extends SeedConfig {
 
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
-  
+
   /**
    * Enable SCSS stylesheet compilation.
    * Set ENABLE_SCSS environment variable to 'true' or '1'
    * @type {boolean}
    */
   ENABLE_SCSS = true;
-  
+
   /**
    * The default title of the application as used in the `<title>` tag of the
    * `index.html`.
    * @type {string}
    */
   APP_TITLE = 'La Prophétie du Sang';
-  
+
   /**
    * Tracking ID.
    * @type {string}
@@ -100,7 +100,9 @@ export class ProjectConfig extends SeedConfig {
 
     /* Add proxy middleware */
     this.PROXY_MIDDLEWARE = [
-      require('http-proxy-middleware')('/wp-json', { ws: false, target: 'http://localhost:9000/' })
+      require('http-proxy-middleware')('/wp-json', { ws: false, target: 'http://localhost:9000/' }),
+      require('http-proxy-middleware')('/handle-email',
+      { ws: false, target: 'http://localhost:9000/wp-content/themes/bloodyprophetie/requests/handle-mail.php' })
     ];
 
     /* Add to or override NPM module configurations: */
