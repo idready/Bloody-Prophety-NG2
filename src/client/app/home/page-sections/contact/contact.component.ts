@@ -3,6 +3,7 @@ import { ReactiveFormsModule, FormGroup, FormControl, FormBuilder, Validators } 
 import { Http, Headers, URLSearchParams } from '@angular/http';
 
 import { WindowService } from '../../../services/window.service';
+import { ContactFeedback } from '../../../models/contact.feedback.interface';
 
 @Component({
   moduleId: module.id,
@@ -15,11 +16,18 @@ export class ContactComponent implements OnInit, OnChanges {
     // @Input() datas: any;
     contactForm: FormGroup;
     nameChangeLog: string[] = [];
-    feedback: {message: string, status: boolean, display?: boolean};
+    feedback: ContactFeedback;
+    defaultFeedback : ContactFeedback;
 
     constructor(@Inject(WindowService) private _window: Window, private frB: FormBuilder, private $http: Http) {}
 
     ngOnInit() {
+
+        this.defaultFeedback = {
+            message: '',
+            status: false,
+            display: false
+        };
 
         this.buildForm();
         this.logNameChange();
@@ -33,11 +41,7 @@ export class ContactComponent implements OnInit, OnChanges {
             message: ['', [Validators.required, Validators.minLength(10)]]
         });
 
-        this.feedback = {
-            message: '',
-            status: false,
-            display: false
-        };
+        this.feedback = this.defaultFeedback;
 
         // Tests setValue && patchValue
         // @Note: this method won't fail silently when a property is not supply
@@ -107,11 +111,7 @@ export class ContactComponent implements OnInit, OnChanges {
 
     resetFeedback() {
 
-        this.feedback = {
-            message: '',
-            status: false,
-            display: false
-        };
+        this.feedback = this.defaultFeedback;
     }
 
     setFeedback(values: any) {
