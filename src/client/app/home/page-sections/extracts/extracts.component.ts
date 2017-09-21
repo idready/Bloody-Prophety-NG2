@@ -13,23 +13,23 @@ import { ExtractsService } from '../services/extracts.service';
   styleUrls: ['extracts.component.css']
 })
 export class ExtractsComponent implements OnInit {
-  
-    private _datas: WpPageStructure;
+
     protected quotes: Quote | Quote[];
+    private _datas: WpPageStructure;
 
     /**
      * [Input Datas received from resolved route]
      * @return {WpPageStructure} [description]
      */
-    @Input() 
+    @Input()
     set datas(datas: WpPageStructure) {
         this._datas = datas;
     }
-    
+
     get datas(): WpPageStructure {
         return this._datas;
     }
-  
+
   constructor(private extractsService: ExtractsService){ }
 
   ngOnInit() {

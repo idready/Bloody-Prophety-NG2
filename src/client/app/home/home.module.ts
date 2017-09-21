@@ -11,8 +11,8 @@ import { PageSectionsModule } from './page-sections/page-sections.module';
 @NgModule({
   /* import [] is all module used and necesary for this module to work properly. */
   imports: [
-    HomeRoutingModule, 
-    SharedModule,  
+    HomeRoutingModule,
+    SharedModule,
     PageSectionsModule
   ],
   /* declarations is all component known to this module; this remains private to this module. */
@@ -22,6 +22,17 @@ import { PageSectionsModule } from './page-sections/page-sections.module';
   /* exports represents all component made public to any module importing this module. */
   exports: [HomeComponent],
   /* Each resolved component route based must provide used services on resolver */
-  providers: [StorageService, WpApiService]
+//   providers: [StorageService, WpApiService]
+    // The code above is a shorthand of the code below
+    providers: [
+        {
+            provide: StorageService,
+            useClass: StorageService
+        },
+        {
+            provide: WpApiService,
+            useClass: WpApiService
+        }
+    ]
 })
 export class HomeModule { }

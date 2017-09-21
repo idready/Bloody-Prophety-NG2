@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, Input, Inject } from '@angular/core';
-import { ReactiveFormsModule, FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Http, Headers, URLSearchParams } from '@angular/http';
 
 import { WindowService } from '../../../services/window.service';
@@ -13,13 +13,17 @@ import { ContactFeedback } from '../../../models/contact.feedback.interface';
 })
 export class ContactComponent implements OnInit, OnChanges {
 
-    // @Input() datas: any;
     contactForm: FormGroup;
-    nameChangeLog: string[] = [];
     feedback: ContactFeedback;
     defaultFeedback : ContactFeedback;
+    nameChangeLog: string[] = [];
+    isLoading: boolean;
 
-    constructor(@Inject(WindowService) private _window: Window, private frB: FormBuilder, private $http: Http) {}
+    constructor(
+        @Inject(WindowService) private _window: Window,
+        private frB: FormBuilder,
+        private $http: Http
+    ) {}
 
     ngOnInit() {
 
@@ -29,8 +33,14 @@ export class ContactComponent implements OnInit, OnChanges {
             display: false
         };
 
+        // (this._window as any)['checkRecaptchaResponse'] = this.checkRecaptcha.bind(this);
+
         this.buildForm();
         this.logNameChange();
+    }
+
+    ngOnChanges(value: any) {
+        console.log(`changes gros ${value}`);
     }
 
     buildForm() {
@@ -38,10 +48,12 @@ export class ContactComponent implements OnInit, OnChanges {
         this.contactForm = this.frB.group({
             name: ['', [Validators.required, Validators.minLength(5)]],
             email: ['', [Validators.required, Validators.email]],
-            message: ['', [Validators.required, Validators.minLength(10)]]
+            message: ['', [Validators.required, Validators.minLength(10)]],
+            // captcha: [null, validateCaptcha],
+            captcha: [null, Validators.nullValidator]
         });
 
-        this.feedback = this.defaultFeedback;
+        this.resetFeedback();
 
         // Tests setValue && patchValue
         // @Note: this method won't fail silently when a property is not supply
@@ -59,29 +71,60 @@ export class ContactComponent implements OnInit, OnChanges {
 
         // Erase feedback if the status changes
         this.contactForm.statusChanges.subscribe(
+
             (data) => {
+
+                let st: string = this.contactForm.status;
+
                 if(data === 'INVALID' && this.feedback.display) {
                     this._window.setTimeout(() => {
                         this.resetFeedback();
                     }, 3000);
+                }
+
+                if(data === 'VALID' && this.contactForm.value.captcha) {
+                    this.postMessage();
+                    this._window['grecaptcha'].reset();
                 }
             }
         );
 
         // this.contactForm.valueChanges.subscribe(
         //     (data) => {
+        //         // Checks form validity from captcha token
+        //         let st: string = this.contactForm.status;
+        //         console.info(data.captcha);
+        //         if(data.captcha){
+        //             console.info('Form valid');
+        //         } else {
+        //             console.info('Form invalid');
+        //         }
         //         if(this.feedback.display) {
         //             this._window.setTimeout(() => {
-        //                 this.resetFeedback();
+        //                 // this.resetFeedback();
         //             }, 3000);
         //         }
         //     }
         // );
+        // this.mockForm();
     }
 
-    postMessage(evt: Event) {
+    /**
+     *
+     * Custom validator exemple
+     */
+    validateCaptcha(ctr: FormControl): any {
+        return null;
+    }
+
+    checkInvisibleGoogleCaptcha(evt: Event) {
 
         if(evt) { evt.preventDefault(); }
+        this._window['grecaptcha'].execute();
+    }
+
+    postMessage() {
+
         let data : {[index: string]: string} = Object.assign({}, this.contactForm.value);
 
         // @TODO: Change once server available
@@ -94,7 +137,6 @@ export class ContactComponent implements OnInit, OnChanges {
         }
 
         this.$http.post('/handle-email', JSON.stringify(data), {headers})
-        // this.$http.post('/handle-email', body.toString(), {headers})
         .subscribe(
             (response: any) => {
 
@@ -103,21 +145,43 @@ export class ContactComponent implements OnInit, OnChanges {
                 this.setFeedback({message: responseFeedback.message,
                     status: (responseFeedback.errors || !responseFeedback.valid) ? false : true, display: true});
 
-                this.contactForm.reset();
+                // this.contactForm.reset();
             },
             (error: any) => { console.warn(error); }
         );
+
     }
 
     resetFeedback() {
-
-        this.feedback = this.defaultFeedback;
+        this.setFeedback();
     }
 
-    setFeedback(values: any) {
-        this.feedback = Object.assign(this.feedback, values);
+    setFeedback(values?: any) {
+        this.feedback = values ? Object.assign(this.feedback, values) : this.defaultFeedback;
     }
 
+    updateFeedBack(evt: Event) {
+
+        if(this.feedback.display) {
+            this.resetFeedback();
+        }
+    }
+
+    captchaResponse(token: string) {
+
+        let status: string = token ? 'VALID' : 'INVALID';
+        console.log(`Captcha response ${status}`);
+    }
+
+    checkRecaptcha(gResponse: any) {
+        console.info(`recaptch callback response: ${gResponse}`);
+    }
+
+    /**
+     *
+     * DEV DEBUG
+     * All functions below are for debug purposes
+     */
     logNameChange() {
 
         const nameControl = this.contactForm.get('name');
@@ -128,13 +192,14 @@ export class ContactComponent implements OnInit, OnChanges {
 
     mockForm() {
 
-        this.contactForm.setValue({
-            name: 'Foobar',
-            email: 'bar@yopmail.com',
-            message: 'Foo bar rulz you'
-        });
+        if(this.contactForm) {
+            this.contactForm.setValue({
+                name: 'Foobar',
+                email: 'bar@yopmail.com',
+                message: 'Foo bar rulz you',
+                captcha: ' '
+            });
+        }
     }
-
-    ngOnChanges() {}
 
 }
