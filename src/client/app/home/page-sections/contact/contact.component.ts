@@ -18,6 +18,7 @@ export class ContactComponent implements OnInit, OnChanges {
     defaultFeedback : ContactFeedback;
     nameChangeLog: string[] = [];
     isLoading: boolean;
+    captchaWidgetId: number;
 
     constructor(
         @Inject(WindowService) private _window: Window,
@@ -32,8 +33,6 @@ export class ContactComponent implements OnInit, OnChanges {
             status: false,
             display: false
         };
-
-        // (this._window as any)['checkRecaptchaResponse'] = this.checkRecaptcha.bind(this);
 
         this.buildForm();
         this.logNameChange();
@@ -84,7 +83,7 @@ export class ContactComponent implements OnInit, OnChanges {
 
                 if(data === 'VALID' && this.contactForm.value.captcha) {
                     this.postMessage();
-                    this._window['grecaptcha'].reset();
+                    this._window['grecaptcha'].reset(this.captchaWidgetId);
                 }
             }
         );
@@ -120,7 +119,7 @@ export class ContactComponent implements OnInit, OnChanges {
     checkInvisibleGoogleCaptcha(evt: Event) {
 
         if(evt) { evt.preventDefault(); }
-        this._window['grecaptcha'].execute();
+        this._window['grecaptcha'].execute(this.captchaWidgetId);
     }
 
     postMessage() {
@@ -167,14 +166,11 @@ export class ContactComponent implements OnInit, OnChanges {
         }
     }
 
-    captchaResponse(token: string) {
+    captchaResponse(token: string, widgetId: number) {
 
+        this.captchaWidgetId = widgetId || 0;
         let status: string = token ? 'VALID' : 'INVALID';
-        console.log(`Captcha response ${status}`);
-    }
-
-    checkRecaptcha(gResponse: any) {
-        console.info(`recaptch callback response: ${gResponse}`);
+        // console.log(`Captcha response ${status} width the widget: ${this.captchaWidgetId}`);
     }
 
     /**

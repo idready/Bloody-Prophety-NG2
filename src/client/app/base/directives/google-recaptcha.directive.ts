@@ -32,6 +32,11 @@ declare global {
     }
 }
 
+/*
+ * @NOTE:
+ * Left Interface unsepared from the Class since we want it as standalone as possible
+ *
+ * */
 export interface ReCaptchaConfig {
     theme? : 'dark' | 'light';
     type? : 'audio' | 'image';
@@ -45,8 +50,6 @@ export interface CaptchaResponse {
     hostname: string;  // the hostname of the site where the reCAPTCHA was solved
     'error-codes': any;
 }
-
-// const myToken = new OpaqueToken('FormControl');
 
 @Directive({
   selector: '[googleRecaptcha]',
@@ -63,17 +66,29 @@ export class GoogleRecaptchaDirective implements OnInit, AfterViewInit, ControlV
     @Input() key: string;
     @Input() size: string;
     @Input() lang: string;
+    /**
+     * Callback used once the captcha is registered, this is called on failure and success (with a token)
+     * @type {@Input}
+     */
     @Input() callback: Function;
+    /**
+     * Default config to fit on captcha requirement
+     * @type {@Input}
+     */
     @Input() config: ReCaptchaConfig = {};
+    //@TODO: Test an emitter
+    //@Output() response: EventEmitter<CaptchaResponse>  = new EventEmitter<CaptchaResponse>();
 
-    @Output() response: EventEmitter<CaptchaResponse>  = new EventEmitter<CaptchaResponse>();
-
-
-    // ControlValueAccessor implementation
+    /**
+     * ControlValueAccessor implementation
+     **/
     private onChange: ( value : string ) => void;
     private onTouched: ( value : string ) => void;
     private control: FormControl;
 
+    /**
+     * Rendered captcha id
+     **/
     private widgetId: number;
 
     constructor(
@@ -90,13 +105,13 @@ export class GoogleRecaptchaDirective implements OnInit, AfterViewInit, ControlV
         this.onChange = (token: string) => token;
         this.onTouched = (value: string) => value;
 
-        (this._window as any)['reCaptchaLoad'] = this.reCaptchaLoad.bind(this);
         this.registerReCaptchaCallback();
         this.addScript();
     }
 
     ngAfterViewInit() {
         console.info('after view init hook');
+        // Used Injector to avoid circular Injection error
         this.control = this.injector.get(NgControl).control;
         this.setValidator();
     }
@@ -134,7 +149,7 @@ export class GoogleRecaptchaDirective implements OnInit, AfterViewInit, ControlV
             this.onChange(token);
             this.onTouched(token);
         });
-        this.callback(token);
+        this.callback(token, this.widgetId);
     }
 
     onExpired() {
@@ -144,7 +159,7 @@ export class GoogleRecaptchaDirective implements OnInit, AfterViewInit, ControlV
             this.onChange(null);
             this.onTouched(null);
         });
-        this.callback('');
+        this.callback('', this.widgetId);
     }
 
     render(element : HTMLElement, config: any) {
@@ -158,11 +173,6 @@ export class GoogleRecaptchaDirective implements OnInit, AfterViewInit, ControlV
     setValidator() {
         // this.control.setValidators(Validators.required);
         this.control.updateValueAndValidity();
-    }
-
-    //@TODO: Pass this callback as func arg
-    reCaptchaLoad() {
-        console.log('Callback');
     }
 
     /**
