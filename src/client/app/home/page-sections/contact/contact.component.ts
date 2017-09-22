@@ -156,7 +156,7 @@ export class ContactComponent implements OnInit, OnChanges {
     }
 
     setFeedback(values?: any) {
-        this.feedback = values ? Object.assign(this.feedback, values) : this.defaultFeedback;
+        this.feedback = values ? Object.assign(this.feedback, values) : Object.assign({}, this.defaultFeedback);
     }
 
     updateFeedBack(evt: Event) {

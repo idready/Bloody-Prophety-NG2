@@ -41,6 +41,7 @@
                 <div class="small-12 columns" *ngIf="false">
                     <button type="button" class="button large info" (click)="mockForm()">Mock form</button>
                 </div>
+                <!-- <pre [ngStyle]="{'background-color': 'white'}">{{feedback|json}}</pre> -->
                 <div googleRecaptcha [key]="'6LerLzEUAAAAAGCv8Xiea4S4sLe15vAWPxZsL3wM'" [size]="'invisible'" formControlName="captcha" (change)="captchaResponse($event)" [attr.required]="false" [callback]="captchaResponse"></div>
             </div>
 
