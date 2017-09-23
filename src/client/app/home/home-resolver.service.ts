@@ -12,8 +12,8 @@ export class HomeResolverService implements Resolve<WpApiService> {
     constructor(
         private wpapi: WpApiService,
         private router: Router
-    ) { 
-        console.info('called constructor');
+    ) {
+        console.info('called resolver HomeResolverService constructor');
     }
     /**
      * [resolve description]
@@ -21,8 +21,8 @@ export class HomeResolverService implements Resolve<WpApiService> {
      * @param  {RouterStateSnapshot}      state [description]
      * @return {Observable<WpApiService>}       [description]
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<WpApiService>{
-        
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<WpApiService> {
+
         return this.wpapi.getPages()
         .map((datas: any) => datas);
     }

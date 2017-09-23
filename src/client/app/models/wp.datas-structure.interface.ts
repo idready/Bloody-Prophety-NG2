@@ -22,7 +22,7 @@ interface CommentsStatus {
     [key: string]: 'open' | 'close';
 }
 
-interface PingStatus extends CommentsStatus{
+interface PingStatus extends CommentsStatus {
 }
 
 interface ACF {
@@ -39,8 +39,8 @@ interface ACF {
  * @type {interface}
  */
 export interface WpPageStructure {
-    
-    acf?: ACF; 
+
+    acf?: ACF;
     date: string | Date;
     date_gmt: string | Date;
     guid: Guid;

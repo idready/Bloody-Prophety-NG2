@@ -10,7 +10,7 @@ interface CommentsStatus {
     PENDING?: string;
     SPAM?: string;
     DELETE?: string;
-    TRASH?: string;  
+    TRASH?: string;
 }
 
 export interface WpConfig {

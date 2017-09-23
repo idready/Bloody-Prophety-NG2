@@ -13,9 +13,9 @@ import { WpPageStructure } from '../models/wp.datas-structure.interface';
   styleUrls: ['home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  
+
   pages: WpPageStructure[];
-  
+
   /**
    * Creates an instance of the HomeComponent with the injected
    * ActivatedRoute.
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
     * Get pages datas
     */
     ngOnInit() {
-        
+
         this.pages = [];
         // Fetch datas from resolve
         this.route.data

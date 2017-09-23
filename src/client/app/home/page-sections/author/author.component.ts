@@ -10,7 +10,7 @@ import { WpPageStructure } from '../../../models/wp.datas-structure.interface';
 })
 export class AuthorComponent implements OnInit {
 
-  private _datas: WpPageStructure;
+   _datas: WpPageStructure;
 
   /**
    * [Input Datas received from resolved route]
@@ -25,7 +25,7 @@ export class AuthorComponent implements OnInit {
       return this._datas;
   }
 
-  constructor(){}
+  constructor() {}
 
   ngOnInit() {}
 

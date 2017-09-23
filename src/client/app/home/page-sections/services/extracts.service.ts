@@ -4,7 +4,7 @@ import { Quote } from '../../../models/quote.interface';
 @Injectable()
 export class ExtractsService {
 
-  constructor() { }
+  constructor() {}
     /**
     * [extractContent Extracts and formats content from a content by using provided separator]
     * @param  {string}   extracts     [Content from which the parts are extracted from]
@@ -19,7 +19,7 @@ export class ExtractsService {
          * let result: Quote | Quote[]; doesn't work when one tries to store on any index like extractKeys;
          */
 
-        if(separator.indexOf(needle) !== -1){
+        if(separator.indexOf(needle) !== -1) {
 
             let result: Quote[];
             let lines: string[] = extracts.split(`${needle}`);
@@ -28,7 +28,7 @@ export class ExtractsService {
                 return {
                     title: line.split(separator[0])[0],
                     // Remove title and only return content
-                    content: line.split(separator[0]).slice(1).join(" "),
+                    content: line.split(separator[0]).slice(1).join(''),
                 };
             });
 
@@ -37,7 +37,7 @@ export class ExtractsService {
 
             let singleQuote: Quote = {};
             let lines: string[] = extracts.split(separator[0]);
-            
+
             extractKeys.forEach((key: string, index: number) => {
                 singleQuote[key] = lines[index];
             });

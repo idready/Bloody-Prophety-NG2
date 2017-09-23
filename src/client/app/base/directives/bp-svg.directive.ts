@@ -34,7 +34,7 @@ export class BpSvgDirective implements OnInit {
      * @param  {ElementRef} element [description]
      * @param  {Renderer2} renderer [description]
      */
-    constructor(private element: ElementRef, private renderer: Renderer2){}
+    constructor(private element: ElementRef, private renderer: Renderer2) {}
 
     ngOnInit() {
 
