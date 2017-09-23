@@ -14,8 +14,8 @@ import { ExtractsService } from '../services/extracts.service';
 })
 export class ExtractsComponent implements OnInit {
 
+    _datas: WpPageStructure;
     protected quotes: Quote | Quote[];
-    private _datas: WpPageStructure;
 
     /**
      * [Input Datas received from resolved route]

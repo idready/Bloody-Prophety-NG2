@@ -8,7 +8,7 @@ export class BpSanitizerPipe implements PipeTransform {
 
     constructor(
         private _sanitizer: DomSanitizer
-    ){}
+    ) {}
     /**
      * [transform sanitize common used values]
      * @param  {any}       value   [Value to be checked or trusted without any modification]

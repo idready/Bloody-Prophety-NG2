@@ -73,8 +73,6 @@ export class ContactComponent implements OnInit, OnChanges {
 
             (data) => {
 
-                let st: string = this.contactForm.status;
-
                 if(data === 'INVALID' && this.feedback.display) {
                     this._window.setTimeout(() => {
                         this.resetFeedback();
@@ -143,8 +141,6 @@ export class ContactComponent implements OnInit, OnChanges {
                 console.log(responseFeedback);
                 this.setFeedback({message: responseFeedback.message,
                     status: (responseFeedback.errors || !responseFeedback.valid) ? false : true, display: true});
-
-                // this.contactForm.reset();
             },
             (error: any) => { console.warn(error); }
         );

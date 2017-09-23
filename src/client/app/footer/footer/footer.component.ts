@@ -12,7 +12,7 @@ export class FooterComponent implements OnInit {
   private authorEmail: string;
   private cprDate: number;
   private fbUrl: string;
-  
+
   constructor() {}
 
   ngOnInit() {

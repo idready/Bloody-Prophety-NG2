@@ -22,17 +22,17 @@ import { PageSectionsModule } from './page-sections/page-sections.module';
   /* exports represents all component made public to any module importing this module. */
   exports: [HomeComponent],
   /* Each resolved component route based must provide used services on resolver */
-//   providers: [StorageService, WpApiService]
+  providers: [StorageService, WpApiService]
     // The code above is a shorthand of the code below
-    providers: [
-        {
-            provide: StorageService,
-            useClass: StorageService
-        },
-        {
-            provide: WpApiService,
-            useClass: WpApiService
-        }
-    ]
+    // providers: [
+    //     {
+    //         provide: StorageService,
+    //         useClass: StorageService
+    //     },
+    //     {
+    //         provide: WpApiService,
+    //         useClass: WpApiService
+    //     }
+    // ]
 })
 export class HomeModule { }

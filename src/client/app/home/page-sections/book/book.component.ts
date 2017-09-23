@@ -12,23 +12,23 @@ import { ExtractsService } from '../services/extracts.service';
   styleUrls: ['book.component.css']
 })
 export class BookComponent implements OnInit {
-    
-    private _datas: WpPageStructure;
+
     protected quote: Quote | Quote[];
+    _datas: WpPageStructure;
     /**
      * [Input Datas received from resolved route]
      * @return {WpPageStructure} [description]
      */
-    @Input() 
+    @Input()
     set datas(datas: WpPageStructure) {
         this._datas = datas;
     }
-    
+
     get datas(): WpPageStructure {
         return this._datas;
     }
 
-    constructor(private extractsService: ExtractsService){}
+    constructor(private extractsService: ExtractsService) {}
 
     ngOnInit() {
         this.quote = this.extractsService.extractContent(this._datas.acf.citatation_auteur, ['content', 'author', 'link'], '<ligne>');
