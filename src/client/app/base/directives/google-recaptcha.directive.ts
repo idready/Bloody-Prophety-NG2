@@ -110,7 +110,7 @@ export class GoogleRecaptchaDirective implements OnInit, AfterViewInit, ControlV
     }
 
     ngAfterViewInit() {
-        console.info('after view init hook');
+
         // Used Injector to avoid circular Injection error
         this.control = this.injector.get(NgControl).control;
         this.setValidator();

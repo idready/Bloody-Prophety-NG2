@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { StorageService } from '../services/storage.service';
+import { WpPageStructure } from '../models/wp.datas-structure.interface';
+
 @Component({
   moduleId: module.id,
   selector: 'bp-blog',
@@ -8,12 +13,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogComponent implements OnInit {
 
-  constructor() {
-    console.info('Blog Component initialized');
-  }
+    private posts: WpPageStructure[];
 
-  ngOnInit() {
-    console.info('init BLOG CMP');
-  }
+    constructor(
+        private storage: StorageService,
+        private route: ActivatedRoute,
+        private router: Router
+    ) {}
+
+    ngOnInit() {
+
+        this.storage.remove('POSTS');
+
+        this.route.data.subscribe(
+            (response: {[index:string] : WpPageStructure[]}) => {
+
+                // The resolver use parent'sroute path as index for the fetched datas
+                this.posts = response[this.route.routeConfig.path];
+                this.storage.set('POSTS', this.posts);
+            },
+            (errors: any) => console.warn(` Error on blog posts fetching ${errors}`)
+        );
+
+    }
 
 }

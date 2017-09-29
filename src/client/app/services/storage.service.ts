@@ -40,6 +40,7 @@ export class StorageService {
      */
     clear() {
         this._window.localStorage.clear();
+        this._window.sessionStorage.clear();
     }
 
     /**

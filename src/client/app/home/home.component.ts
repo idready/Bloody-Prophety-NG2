@@ -34,7 +34,8 @@ export class HomeComponent implements OnInit {
         this.route.data
         .subscribe((response: {[index:string] : WpPageStructure[]}) => {
 
-            let sortedPages : any = response['home'];
+            // If there is more than on resolver this will break;
+            let sortedPages : any = response[Object.keys(this.route.routeConfig.resolve)[0]];
             sortedPages
             .sort((first: WpPageStructure, second: WpPageStructure) => {
                 /**

@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import toPromise from 'rxjs/add/operator/toPromise';
 
 import { Config } from './../shared/config/env.config';
-import { WpConfig } from '../models/wp.config.interface';
+import { WpConfig, Comment } from '../models/wp.config.interface';
 import { StorageService } from './storage.service';
 import { WpPageStructure, WpPostStructure } from '../models/wp.datas-structure.interface';
 
@@ -15,7 +16,10 @@ export class WpApiService {
     private CONFIG: WpConfig;
     private isProd: string;
 
-    constructor(private http: Http, private storage: StorageService) {
+    constructor(
+        private http: Http,
+        private storage: StorageService
+    ) {
 
         this.isProd = (Config.ENV === 'PROD')? 'wp':'';
 
@@ -43,12 +47,6 @@ export class WpApiService {
      */
     getPages(): Observable<any> {
 
-        // Use storage for uneditable datas like comments
-        // let pages: WpPageStructure[] | any = this.storage.get('WP_PAGES');
-        // if(pages) {
-        //     return Observable.of(pages);
-        // };
-
         return this.http
                    .get(`${this.CONFIG.WP.PAGES}`)
                    .map(response => {
@@ -59,22 +57,32 @@ export class WpApiService {
 
     /**
      * [getPosts description]
-     * @return {Observable<any>} [description]
+     * @return {Observable<WpPageStructure | WpApiService[]>} [description]
      */
-    getPosts(): Observable<any> {
+    getPosts(postId?: number): Observable<WpPageStructure | WpApiService[]> {
 
-        // let posts: WpPageStructure[] | any = this.storage.get('WP_POSTS');
-        // if(posts) {
-        //     return Observable.of(posts);
-        // };
+        const id: string = postId ? `/${postId}` : '';
 
         return this.http
-                   .get(`${this.CONFIG.WP.POSTS}`)
+                   .get(`${this.CONFIG.WP.POSTS.concat(id)}`)
                    .map(response => {
 
                        this.storage.set('WP_POSTS', response.json());
                        return response.json();
                    });
+    }
+
+    getPostComments(postId?: string): Observable<Comment | Comment[]> {
+
+        const commentsId = postId ? `?post=${postId}` : ``;
+
+        return this.http
+                    .get(`${this.CONFIG.WP.COMMENTS}/${commentsId}`)
+                    .map(response => {
+
+                        this.storage.set('WP_POSTS_COMMENTS', response.json());
+                        return response.json();
+                    });
     }
 
 }

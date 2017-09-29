@@ -33,12 +33,21 @@ $dropTrailWidth: ($dropsCount * 2) * $dropsSize + ($dropsSize/1);
             flex: 0 auto;
         }
     }
-    
+
     @include breakpoint('medium'){
 
         padding-top: 100px;
     }
 
+}
+
+.blood-container {
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    min-width: 100vw;
 }
 
 .loader-text {
@@ -51,9 +60,9 @@ $dropTrailWidth: ($dropsCount * 2) * $dropsSize + ($dropsSize/1);
     margin-top: 30px;
     text-align: center;
     transition: $default-transition;
-    
+
     @include breakpoint('medium'){
-        
+
         font-size: 30px;
         margin-top: 20px;
     }
@@ -97,19 +106,19 @@ $dropTrailWidth: ($dropsCount * 2) * $dropsSize + ($dropsSize/1);
             z-index: 3;
         }
     }
-    
+
     @include breakpoint('medium'){
-        
+
         flex-direction: row;
-        
+
         .drop {
-            
+
             margin: 0 30px;
-            
+
             &.moving {
                 animation: bloodDrop 3s ease infinite alternate-reverse;
             }
-            
+
         }
     }
 }

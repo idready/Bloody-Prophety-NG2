@@ -8,14 +8,16 @@ import { CleanTransitionsDirective } from './directives/clean-transitions.direct
 import { SmartMenuDirective } from './directives/smart-menu.directive';
 import { ScrollToDirective } from './directives/scroll-to.directive';
 import { GoogleRecaptchaDirective } from './directives/google-recaptcha.directive';
+import { BloodLoaderDirective } from './directives/blood-loader.directive';
 
 @NgModule({
   imports: [
     CommonModule,
   ],
   declarations: [BpSanitizerPipe, BpSvgDirective, CleanTransitionsDirective, SmartMenuDirective, ScrollToDirective,
-                GoogleRecaptchaDirective],
+                GoogleRecaptchaDirective,
+                BloodLoaderDirective],
   exports: [BpSanitizerPipe, BpSvgDirective, CleanTransitionsDirective, SmartMenuDirective, ScrollToDirective,
-            GoogleRecaptchaDirective]
+            GoogleRecaptchaDirective, BloodLoaderDirective]
 })
 export class BaseModule { }

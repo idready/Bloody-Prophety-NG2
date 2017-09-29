@@ -10,20 +10,20 @@ import animateScrollTo from 'animated-scroll-to';
   }
 })
 export class ScrollToDirective implements OnInit {
-    
+
     /**
      * [Input DOM element used to scroll to]
      * @return {[type]} [description]
      */
     @Input()
     domId: string;
-    
+
     scrollOptions: object;
-    
+
     constructor(@Inject(WindowService) private _window: Window) { }
-    
-    ngOnInit(){
-        
+
+    ngOnInit() {
+
         this.scrollOptions = {
             speed: 500,
             minDuration: 250,
@@ -31,22 +31,22 @@ export class ScrollToDirective implements OnInit {
             cancelOnUserAction: true
         };
     }
-    
+
     /**
      * [onClick scroll to the target]
      * @param  {Event}  event [description]
      * @return void       [description]
      */
-    onClick(event: Event){
-        
-        if(event){ event.preventDefault(); }
-        
+    onClick(event: Event) {
+
+        if(event) { event.preventDefault(); }
+
         let target: Element = this._window.document.querySelector(`#${this.domId}`);
-        if(target){
-        
+        if(target) {
+
             let offset: number = (<HTMLElement>target).offsetTop;
             animateScrollTo(offset);
         }
     }
-    
+
 }

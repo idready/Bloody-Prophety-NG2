@@ -1,3 +1,4 @@
+import { Comment } from './wp.config.interface';
 
 interface Guid {
     rendered?: string;
@@ -62,6 +63,7 @@ export interface WpPageStructure {
     menu_order: number;
     meta: Array<object>;
     template:  string;
+    comments: Comment | Comment[];
 }
 
 /**

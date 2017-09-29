@@ -1,3 +1,21 @@
-<p>
-  post works!
-</p>
+
+<div bloodLoader [display]="isLoadingPost" *ngIf="isLoadingPost; else elseBlock"></div>
+
+<ng-template #elseBlock>
+    <section class="row fadeInUp animated" role="main">
+        <article class="post list small-12">
+            <h3 class="post__title">
+                <span class="post__title-text" [innerHTML]="postData.title.rendered"></span>
+            </h3>
+            <p>B: {{b | percent:'4.3-5'}}</p>
+            <div class="post__meta">
+                <time class="post__meta-date" datetime="postData.date">
+                    <span class="post__meta-icon"><i class="icon-elt" bpSvg [svgName]="'calendar'" ></i></span>{{postData.date | date : 'd MMMM yyyy'}}
+                </time>
+                <span class="post__meta-comment" ng-if="postData.comment_status === COMMENT_STATUS.OPEN"><span class="post__meta-icon"><i class="icon-elt" bpSvg [svgName]="'speech'"></i></span>{{postData.comments.length}} commentaire<span *ngIf="postData.comments.length>1">s</span></span>
+                <span class="post__meta-category"ng-if="postData.categories && postData.categories.length"><span class="post__meta-icon"><i class="icon-elt" bpSvg [svgName]="'tag'"></i></span>Livre</span>
+            </div>
+            <div class="post__content" [innerHTML]="postData.content.rendered | bpSanitizer : 'none'"></div>
+        </article>
+    </section>
+</ng-template>
