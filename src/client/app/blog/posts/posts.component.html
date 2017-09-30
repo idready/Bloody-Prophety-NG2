@@ -1,0 +1,21 @@
+
+<div bloodLoader [display]="isLoadingPosts" *ngIf="isLoadingPosts; else elseBlock"></div>
+
+<ng-template #elseBlock>
+    <section class="row fadeInUp animated" role="main">
+        <article class="post list small-12" *ngFor="let post of posts;">
+            <!-- <pre [ngStyle]="{'color': 'white'}">{{post.date|json}}</pre> -->
+            <h3 class="post__title">
+                <a class="post__title-text" [routerLink]="['post', post.id]"  [innerHTML]="post.title.rendered"></a>
+            </h3>
+            <div class="post__meta">
+                <time class="post__meta-date" [attr.datetime]="post.date">
+                    <span class="post__meta-icon"><i class="icon-elt" bpSvg [svgName]="'calendar'" ></i></span>{{post.date | date : 'd MMMM yyyy'}}
+                </time>
+                <span class="post__meta-comment"  *ngIf="post.comment_status === COMMENT_STATUS.OPEN"><span class="post__meta-icon"><i class="icon-elt" bpSvg [svgName]="'speech'"></i></span>{{post.comments.length}} commentaire<span *ngIf="post.comments.length>1">s</span></span>
+                <span class="post__meta-category" *ngIf="post.categories && post.categories.length"><span class="post__meta-icon"><i class="icon-elt" bpSvg [svgName]="'tag'"></i></span>Livre</span>
+            </div>
+            <p class="post__extract" [innerHTML]="post.excerpt.rendered"></p>
+        </article>
+    </section>
+</ng-template>

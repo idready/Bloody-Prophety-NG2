@@ -6,7 +6,7 @@
 /* All styles related to the author part
  * ==================================== */
 
-:host {
+ :host {
     flex: 1 0 100%;
 }
 
@@ -109,11 +109,6 @@
         }
     }
 
-    .post__comments-form-title {
-        color: $white;
-        font-family: Tahoma;
-    }
-
     // Feeds bigger devices
     @include breakpoint('medium'){
 
@@ -148,4 +143,3 @@
         }
     }
 }
-

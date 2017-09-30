@@ -1,0 +1,15 @@
+
+<!-- <pre [ngStyle]="{'color': 'white'}">{{comment|json}}</pre>
+<pre [ngStyle]="{'color': 'white'}">{{COMMENT_STATUS|json}}</pre> -->
+<section class="post__comments">
+    <div class="post__comments-post">
+        <div class="row" *ngIf="COMMENT_STATUS.APPROVED === comment.status">
+            <div  class="post__comments-post--meta small-12 medium-3">
+                <img src="{{comment.author_avatar_urls['96']}}" class="post__comments-post--img" alt="Avatar de l'auteur du commentaire">
+                <a href="{{comment.author_url}}" target="_blank" rel="noopener noreferrer"><span class="post__comments-post--name">{{comment.author_name}}</span></a>
+                <time class="post__comments-post--date" [attr.datetime]="comment.date">{{comment.date | date : 'd MMMM yyyy'}}</time>
+            </div>
+            <div class="post__comments-post--content small-12 medium-9" [innerHTML]="comment.content.rendered | bpSanitizer : 'html'"></div>
+        </div>
+    </div>
+</section>

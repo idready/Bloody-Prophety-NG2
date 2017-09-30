@@ -1,0 +1,150 @@
+
+/* ===========================================
+ * Author
+ * =========================================== */
+
+/* All styles related to the author part
+ * ==================================== */
+
+ :host {
+    flex: 1 0 100%;
+}
+
+@import '../../../../scss/core/scss/util/util';
+@import '../../../../scss/core/scss/settings/settings';
+@import '../../../../scss/components/variables';
+@import '../../../../scss/regions/components/pagination';
+
+
+.post__meta-comment {
+    font-size: 14px;
+}
+
+.post__meta-comment {
+    margin-left: 10px;
+}
+
+// COMMENT FORM -common-
+.post__comments-form-title,
+.post__comments {
+
+    color: $white;
+    font-family: Tahoma;
+}
+
+// COMMENTS
+.post__comments {
+
+    color: $white;
+    font-family: Tahoma;
+    padding-top: $global-padding * 2;
+
+    label {
+        color: $white;
+    }
+
+    .post__comments-count {
+
+        font-size: $global-font-size * 1.1;
+        margin: $global-margin * 1.5 0;
+    }
+
+    .post__comments-post {
+
+        background: $white;
+        justify-content: flex-start; //Default but testing purpose
+        margin-bottom: $global-margin * 1.5;
+        padding: $global-padding;
+
+        .post__comments-post--meta {
+            text-align: center;
+        }
+
+        .post__comments-post--img,
+        .post__comments-post--date {
+            display: block;
+        }
+
+        .post__comments-post--name {
+            font-size: 18px;
+        }
+        .post__comments-post--date {
+
+            color: $secondary-color;
+            font-size: 14px;
+        }
+
+        .post__comments-post--img {
+            margin: $global-margin auto;
+        }
+
+        .post__comments-post--content {
+
+            color: $secondary-color;
+            line-height: 1;
+            padding: $global-padding;
+        }
+    }
+
+    .post__comment-feedback {
+
+        display: flex;
+
+        &.success {
+            color: $success-color;
+        }
+        &.error {
+            color: $alert-color;
+        }
+
+        /deep/ .icon {
+
+            height: 15px;
+            width: 15px;
+        }
+
+        .post__comment-feedback-icon {
+
+            align-items: center;
+            display: flex;
+            flex: 0 auto;
+            margin-right: 15px;
+        }
+        .post__comment-feedback-message {
+
+            flex: 1 auto;
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+
+        @include breakpoint('medium'){
+
+            .icon {
+
+                height: 20px;
+                width: 20px;
+            }
+
+            .post__comment-feedback-message {
+                font-size: 18px;
+            }
+        }
+    }
+
+    @include breakpoint('medium'){
+
+        .post__comments-count {
+            font-size: $global-font-size * 1.4;
+        }
+
+        .post__comments-post {
+
+            .post__comments-post--name {
+                font-size: 16px;
+            }
+            .post__comments-post--date {
+                font-size: 12px;
+            }
+        }
+    }
+}
