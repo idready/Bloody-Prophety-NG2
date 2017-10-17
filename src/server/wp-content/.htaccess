@@ -1,0 +1,9 @@
+
+# Most of the shared hosting has disabled the HTTP Authorization Header by default, this enable  it.
+RewriteEngine on
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]
+
+# To enable this option you’ll need to edit your .htaccess file adding the follow
+# See https://github.com/Tmeister/wp-api-jwt-auth/issues/1
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
