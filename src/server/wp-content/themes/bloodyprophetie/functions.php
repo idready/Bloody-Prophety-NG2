@@ -47,3 +47,5 @@ add_filter( 'rest_cache_show_admin', function() {
 //     return true;
 // }
 // add_filter('rest_allow_anonymous_comments','filter_rest_allow_anonymous_comments');
+
+wp_enqueue_script( 'wp-api' );
