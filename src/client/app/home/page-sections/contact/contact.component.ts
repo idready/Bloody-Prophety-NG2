@@ -114,12 +114,23 @@ export class ContactComponent implements OnInit, OnChanges {
         return null;
     }
 
+    /**
+     *
+     * Execute a captcha
+     * @param {Event} evt
+     * @memberof ContactComponent
+     */
     checkInvisibleGoogleCaptcha(evt: Event) {
 
         if(evt) { evt.preventDefault(); }
         this._window['grecaptcha'].execute(this.captchaWidgetId);
     }
 
+    /**
+     *
+     * Post the client message and update feedback
+     * @memberof ContactComponent
+     */
     postMessage() {
 
         let data : {[index: string]: string} = Object.assign({}, this.contactForm.value);
@@ -147,14 +158,31 @@ export class ContactComponent implements OnInit, OnChanges {
 
     }
 
+    /**
+     *
+     * All said on the function's name
+     * @memberof ContactComponent
+     */
     resetFeedback() {
         this.setFeedback();
     }
 
+    /**
+     *
+     * All said on the function's name
+     * @param {*} [values]
+     * @memberof ContactComponent
+     */
     setFeedback(values?: any) {
         this.feedback = values ? Object.assign(this.feedback, values) : Object.assign({}, this.defaultFeedback);
     }
 
+    /**
+     *
+     * All said on the function's name
+     * @param {Event} evt
+     * @memberof ContactComponent
+     */
     updateFeedBack(evt: Event) {
 
         if(this.feedback.display) {
@@ -162,6 +190,13 @@ export class ContactComponent implements OnInit, OnChanges {
         }
     }
 
+    /**
+     *
+     * This is the callback the captcha use for success/failure callback
+     * @param {string} token
+     * @param {number} widgetId
+     * @memberof ContactComponent
+     */
     captchaResponse(token: string, widgetId: number) {
 
         this.captchaWidgetId = widgetId || 0;

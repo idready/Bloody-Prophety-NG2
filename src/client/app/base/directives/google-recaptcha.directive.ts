@@ -1,3 +1,4 @@
+// Credits to Netanel Basal : https://netbasal.com/how-to-integrate-recaptcha-in-your-angular-forms-400c43344d5c
 import {
     ElementRef,
     Directive,
@@ -23,6 +24,7 @@ import {
     NG_VALUE_ACCESSOR
 } from '@angular/forms';
 import { WindowService } from '../../services/window.service';
+import { CaptchaResponse } from '../../models/contact.feedback.interface';
 
 declare const grecaptcha: any;
 declare global {
@@ -44,12 +46,12 @@ export interface ReCaptchaConfig {
     tabindex? : number;
 }
 
-export interface CaptchaResponse {
-    success: boolean;
-    challenge_ts: string; // timestamp of the challenge load (ISO format yyyy-MM-dd'T'HH:mm:ssZZ)
-    hostname: string;  // the hostname of the site where the reCAPTCHA was solved
-    'error-codes': any;
-}
+// export interface CaptchaResponse {
+//     success: boolean;
+//     challenge_ts: string; // timestamp of the challenge load (ISO format yyyy-MM-dd'T'HH:mm:ssZZ)
+//     hostname: string;  // the hostname of the site where the reCAPTCHA was solved
+//     'error-codes': any;
+// }
 
 @Directive({
   selector: '[googleRecaptcha]',
@@ -77,7 +79,7 @@ export class GoogleRecaptchaDirective implements OnInit, AfterViewInit, ControlV
      */
     @Input() config: ReCaptchaConfig = {};
     //@TODO: Test an emitter
-    //@Output() response: EventEmitter<CaptchaResponse>  = new EventEmitter<CaptchaResponse>();
+    @Output() response: EventEmitter<CaptchaResponse>  = new EventEmitter<CaptchaResponse>();
 
     /**
      * ControlValueAccessor implementation
@@ -142,7 +144,7 @@ export class GoogleRecaptchaDirective implements OnInit, AfterViewInit, ControlV
         };
     }
 
-    onSuccess(token: string) {
+    onSuccess(token: string, ...arg: any[]) {
 
         // Notify changes to Angular
         this.ngZone.run(() => {
@@ -150,6 +152,12 @@ export class GoogleRecaptchaDirective implements OnInit, AfterViewInit, ControlV
             this.onTouched(token);
         });
         this.callback(token, this.widgetId);
+        this.response.emit({
+            success: true,
+            challenge_ts: Date.now().toString(),
+            hostname: '',
+            'error-codes': ''
+        });
     }
 
     onExpired() {
@@ -160,6 +168,12 @@ export class GoogleRecaptchaDirective implements OnInit, AfterViewInit, ControlV
             this.onTouched(null);
         });
         this.callback('', this.widgetId);
+        this.response.emit({
+            success: true,
+            challenge_ts: Date.now().toString(),
+            hostname: '',
+            'error-codes': ''
+        });
     }
 
     render(element : HTMLElement, config: any) {

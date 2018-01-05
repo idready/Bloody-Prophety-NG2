@@ -95,6 +95,14 @@ export class ProjectConfig extends SeedConfig {
         defaultExtension: 'js',
       }
     });
+    additionalPackages.push({
+        name:'angular2-jwt',
+        path:'node_modules/angular2-jwt',
+        packageMeta:{
+          main: 'angular2-jwt',
+          defaultExtension: 'js',
+        }
+    });
     this.addPackagesBundles(additionalPackages);
     delete this.SYSTEM_BUILDER_CONFIG['packageConfigPaths'];
 

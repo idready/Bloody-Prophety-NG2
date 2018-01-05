@@ -28,7 +28,6 @@ export class BlogComponent implements OnInit {
         this.route.data.subscribe(
             (response: {[index:string] : WpPageStructure[]}) => {
 
-                // The resolver use parent'sroute path as index for the fetched datas
                 this.posts = response[this.route.routeConfig.path];
                 this.storage.set('POSTS', this.posts);
             },

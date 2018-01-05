@@ -14,9 +14,7 @@ export class CommentComponent implements OnInit {
 
     constructor() {}
 
-    ngOnInit() {
-        console.info('Comments', this.comment);
-    }
+    ngOnInit() {}
 
     get COMMENT_STATUS(): Object {
         return {

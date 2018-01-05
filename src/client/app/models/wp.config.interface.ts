@@ -1,10 +1,21 @@
+/**
+ *
+ * Wordpress config Urls
+ * @interface Wp
+ */
 interface Wp {
+    OAUTH: string;
     PAGES: string;
     POSTS: string;
     COMMENTS: string;
     CATEGORIES: string;
 }
 
+/**
+ *
+ * Known comment status
+ * @interface CommentsStatus
+ */
 interface CommentsStatus {
     APPROVE?: string;
     PENDING?: string;
@@ -13,11 +24,23 @@ interface CommentsStatus {
     TRASH?: string;
 }
 
+/**
+ *
+ * Full wp config item
+ * @export
+ * @interface WpConfig
+ */
 export interface WpConfig {
     readonly WP?: Wp;
     readonly COMMENTS_STATUS?: CommentsStatus;
 }
 
+/**
+ *
+ * Comment item
+ * @export
+ * @interface Comment
+ */
 export interface Comment {
     author: string;
     author_email: string;

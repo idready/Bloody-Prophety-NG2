@@ -26,6 +26,10 @@ interface CommentsStatus {
 interface PingStatus extends CommentsStatus {
 }
 
+/**
+ *
+ * @interface ACF
+ */
 interface ACF {
     page_position?: number;
     extraits_livre?: string;

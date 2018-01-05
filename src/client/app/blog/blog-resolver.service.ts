@@ -23,9 +23,7 @@ export class BlogResolverService implements Resolve<WpPageStructure | WpApiServi
      */
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<WpPageStructure | WpApiService[]> {
 
-
         return this.wpapi.getPosts();
-
     }
 
 }

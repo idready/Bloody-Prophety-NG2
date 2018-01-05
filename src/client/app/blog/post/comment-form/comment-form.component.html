@@ -1,0 +1,58 @@
+<section id="contact" class="contact-form">
+    <div class="contact__message-form">
+        <div class="row">
+            <h4 class="contact__message-form-title columns">Un message, une question pour moi ? C'est par ici.</h4>
+        </div>
+        <!-- Find out how to get form and post from datas -->
+        <form name="contactForm" id="contactForm" method="Post" (ngSubmit)="checkInvisibleGoogleCaptcha($event)" [formGroup]="contactForm" novalidate>
+            <!-- <pre [ngStyle]="{'background-color': 'white'}">{{contactForm.value|json}}</pre> -->
+            <div class="row">
+                <div class="small-12 columns">
+                    <label for="author_name">Nom et prénom
+                        <input type="text" name="author_name" formControlName="author_name" placeholder="Nom et prénom" (focus)="updateFeedBack($event)">
+                    </label>
+                    <p *ngIf="contactForm.get('author_name').touched && contactForm.get('author_name').invalid" class="help-text alert">Le nom et prénom sont requis. (Minimum 5 caractères)</p>
+                </div>
+                <div class="small-12 columns row">
+                    <div class="small-12 medium-6 columns">
+                        <label for="author_email">Email
+                            <input type="email" name="author_email" placeholder="Email" formControlName="author_email" (focus)="updateFeedBack($event)">
+                        </label>
+                    </div>
+                    <div class="small-12 medium-6 columns">
+                        <label for="author_url">Website
+                            <input type="email" name="author_url" placeholder="Site web" formControlName="author_url" (focus)="updateFeedBack($event)">
+                        </label>
+                    </div>
+                    <p *ngIf="contactForm.get('author_email').touched && contactForm.get('author_email').invalid" class="help-text alert">Adresse email invalide.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-12 columns">
+                    <label for="content">Message
+                        <textarea placeholder="Votre message" name="content" cols="30" rows="4" formControlName="content" (focus)="updateFeedBack($event)"></textarea>
+                    </label>
+                    <p *ngIf="contactForm.get('content').touched && contactForm.get('content').invalid" class="help-text alert">Le contenu du message ne peut être vide. (Minimum 10 caractères)</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-6 columns">
+                    <button class="button large alert" [disabled]="contactForm.invalid || isLoading" type="submit">Ajouter</button>
+                </div>
+                <p *ngIf="feedback.display" [ngClass]="{'alert': !feedback.status, 'success': feedback.status}" class="help-text small-12 columns animated fadeInUp">
+                    <i class="icon-elt" bpSvg [svgName]="(feedback.status) ? 'checked' : 'close'"></i>
+                    <span class="feedback-mg" [innerHTML]="feedback.message"></span>
+                </p>
+                <!-- Debugger -->
+                <div class="small-12 columns">
+                <!-- <div class="small-12 columns" *ngIf="false"> -->
+                    <button type="button" class="button large info" (click)="mockForm()">Mock form</button>
+                </div>
+                <div googleRecaptcha [key]="'6LerLzEUAAAAAGCv8Xiea4S4sLe15vAWPxZsL3wM'" [size]="'invisible'" formControlName="captcha" (change)="captchaResponse($event)" (response)="recaptchaValidated($event)" [attr.required]="false" [callback]="captchaResponse"></div>
+            </div>
+
+        </form>
+    </div>
+</section>

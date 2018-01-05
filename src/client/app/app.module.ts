@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { WindowService } from './services/window.service';
 
 import { AppRoutingModule } from './app-routing.module';
+import { OauthModule } from './oauth/oauth.module';
 import { AppComponent } from './app.component';
 import { BaseModule } from './base/base.module';
 
@@ -17,6 +18,7 @@ import { BlogModule } from './blog/blog.module';
 // @TODO: Add a pageNotFound component
 @NgModule({
   imports: [
+    OauthModule,
     AppRoutingModule,
     BrowserModule,
     HttpModule,
